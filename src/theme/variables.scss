@@ -5,6 +5,15 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+@font-face {
+  font-family: DRLCircular-Bold;
+  src: url(../assets/fonts/DRLCircular-Bold.otf) format("otf");
+  font-weight: 200;  
+  }
+
+  $font-family-md-base: "DRLCircular-Bold";
+  $font-family-ios-base: "DRLCircular-Bold";
+  $font-family-wp-base: "DRLCircular-Bold";
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -13,7 +22,6 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
-
 
 // Shared Variables
 // --------------------------------------------------
@@ -38,7 +46,11 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  roxo:       #522e91,
+  laranja:    #f06624,
+  rosa:       #fce8de,
+  cinza:      #dbdede
 );
 
 
@@ -70,7 +82,118 @@ $colors: (
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import "ionic.theme.default";
+//@import "ionic.theme.default";
+
+.body, h1,h2,h3,h4,h5, p {
+  color: color($colors, roxo) !important;
+}
+
+
+.header {
+    display: inline-block !important;
+    height: 240px !important;
+    position: relative !important;
+    //background-color: #522e91 !important;
+    border-width: 0px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color:  white !important;
+    z-index:2 !important;
+    
+}
+
+.toolbar-background , .toolbar-background-md{
+  background: linear-gradient(#522e91 70%,white 50%) !important;
+}
+.toolbar-ios, .ion-title{
+    
+    padding: inherit !important;
+    position: relative !important;
+    /* width: 100%; */
+    /* height: 100%; */
+    /* -webkit-transform: translateZ(0); */
+    /* transform: translateZ(0); */
+    /* pointer-events: none; */
+}
+
+
+.toolbar-title, .toolbar-title-md, .title, .title-md > div > p {
+  color: white !important;// color($colors, white) !important;
+  z-index:2 !important;
+  text-align: center;
+}
+
+.title-md > div > hr{
+  display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid white;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+.espaco-botoes-principais{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  z-index:2;
+}
+.espaco-botoes-principais-local-secundario{
+  display: inline-block;
+  height: 220px;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  z-index:2;
+}
+
+.img-botao-topo-1, .img-botao-topo-2, .img-botao-topo-3{
+  border-radius: 50%;
+  border-radius: 100%;
+  border: 1px solid #e6dcdc;
+  z-index:1;
+  margin: -10px 0px 0px 0px;
+}
+.img-botao-topo-3{
+  float: right;
+}
+
+.img-logo-topo-drreddys{
+  float: left;
+  height: 50px;
+}
+
+.img-logo-topo-perfil{
+  float: right;
+  height: 50px;
+}
+
+.umterco {
+  width: 33%;
+}
+
+
+.textbox-redondo-e-branco{
+  position: relative;
+    display: inline-block;
+    width: 100%;
+    font-weight: 300;
+    font-size: 18px;
+    color: #FFF;
+    text-transform: uppercase;
+    padding: 14px 22px 16px 22px;
+    border: solid 1px #FFF;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
+.overlay-image-button{
+
+}
 
 
 // Ionicons

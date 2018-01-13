@@ -1,0 +1,25 @@
+page-selecionar-clinica {
+    $checkbox-ios-background-color-on: color($colors-ios, roxo);
+    $checkbox-ios-icon-size: 40px;
+
+    $checkbox-md-background-color-on: color($colors-ios, roxo);
+    $checkbox-md-icon-size: 40px;
+
+    $checkbox-wp-background-color-on: color($colors-ios, roxo);
+    $checkbox-wp-icon-size: 40px;
+
+    $checkbox-background-color-on: color($colors-ios, roxo);
+    $checkbox-icon-size: 40px;
+
+.checkbox-royal input:before,
+.checkbox-royal button:after,
+.checkbox-royal .checkbox-icon:before {
+border-color: #522e91;
+}
+
+.checkbox-royal .checkbox-royal:after {
+    //border-color: //whatever you like it to be{
+    background: #522e91;
+    border-color: #522e91;
+}
+}

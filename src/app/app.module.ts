@@ -7,6 +7,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { DatePipe } from '@angular/common';
+import { ContactProvider } from '../providers/contact/contact';
+import { MedicamentoProvider } from '../providers/medicamento/medicamento';
+import { ClinicaProvider } from '../providers/clinica/clinica';
+import { PropostaProvider } from '../providers/proposta/proposta';
+import { PropostaMedicamentoProvider } from '../providers/proposta-medicamento/proposta-medicamento';
+import { PropostaAtualProvider } from '../providers/proposta-atual/proposta-atual';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +23,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +34,14 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatePipe,
+    ContactProvider,
+    MedicamentoProvider,
+    ClinicaProvider,
+    PropostaProvider,
+    PropostaMedicamentoProvider,
+    PropostaAtualProvider
   ]
 })
 export class AppModule {}

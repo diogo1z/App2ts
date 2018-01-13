@@ -1,0 +1,29 @@
+<ion-content padding class="background" style="text-align:center;">
+
+  <div style="height:15%;width:100%;">
+    <img src="../assets/imgs/logo-dr.reddys.png" style="filter: invert(100%)" class="img-logo-topo-drreddys" />
+  </div>
+  <div name="login" style="text-align:center;height:70%;border-radius: 50%;border-radius: 100%;background-color:#522e91;padding-top: 5%;">
+    <!--<div name="login" style="margin-left:10%;text-align:center;width:80%;height:60%;border-radius: 50%;border-radius: 100%;background-color:#522e91;padding-top: 5%;">-->
+    <img src="../assets/imgs/logo-sonred-contraido.png" style="height: 30%;" />
+    <br/>
+    <br/>
+    <ion-list>
+      <ion-item class="textbox-redondo-e-branco" style="border-radius: 40px;background: transparent;border-width: 0.5px;border-color: white;border-style: groove;margin-left:15%;width:70%;text-align:center;">
+        <ion-label style="color:white;font-size:20px;" stacked>Email</ion-label>
+        <ion-input style="color:white;font-size:20px;" class="" type="text" name="email" [(ngModel)]="model.email"></ion-input>
+      </ion-item>
+
+      <br/>
+      <ion-item class="textbox-redondo-e-branco" style="border-radius: 40px;background: transparent;border-width: 0.5px;border-color: white;border-style: groove;margin-left:15%;width:70%;text-align:center;">
+        <ion-label style="color:white;font-size:20px;" stacked>Password</ion-label>
+
+        <ion-input style="color:white;font-size:20px;" class="" type="password" name="senha" [(ngModel)]="model.senha"></ion-input>
+      </ion-item>
+    </ion-list>
+    <img src="../assets/icon/seta-icon-5.png" style="height: 15%;" class="overlay-image-button" (click)="logar()" />
+  </div>
+  <div style="height:20%;width:100%;">
+    <img src="../assets/imgs/slogan-roxo.png" style="height: 70%;" class="img-footer-good" />
+  </div>
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar style="padding: inherit !important;position: relative !important;">
+    <ion-title style="padding: inherit !important;position: relative !important;">
+      <p>
+        <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
+        <img src="../assets/icon/perfil-icon.png" class="img-logo-topo-perfil" /> SIMULADOR DE
+        <br/>
+        <u>
+          <b>OPORTUNIDADES</b> DE NEGOCIOS</u>
+        <br/>
+        <b>ONCOCLINICAS</b>
+
+      </p>
+      <hr/>
+    </ion-title>
+
+    <img src="../assets/icon/clinicas-icon-1.png" class="img-botao-topo-1">
+    <img src="../assets/icon/produtos-icon-1.png" class="img-botao-topo-2">
+
+    <img src="../assets/icon/comparativo-icon-1.png" style="filter: sepia(50%)grayscale(70%)brightness(160%);" class="img-botao-topo-3">
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<div style="float:none;padding-top:10px;">
+  <ion-card style="vertical-align: middle;text-align: center;">
+    <div style="width:20%;float:left;">
+      <h1>Rentabilidade</h1>
+    </div>
+    <div style="width:20%;float:left;">
+      <h2 style="font-size: 23px;">Rentabilidade<br/>unitária</h2>
+
+    </div>
+    <div style="width:20%;float:left;">
+      <h2 style="font-size: 18px;">Rentabilidade<br/>P/ Paciente</h2>
+
+    </div>
+    <div style="width:20%;float:left;">
+      <h2 style="font-size: 23px;"> Rentabilidade<br/>Mensal </h2>
+    </div>
+    <div style="width:20%;float:left;">
+      <h2 style="font-size: 23px;"> Rentabilidade<br/>Anual </h2>
+    </div>
+  </ion-card>
+  <ion-list>
+    <ion-card style="vertical-align: middle;text-align: center;">
+      <div style="width:20%;float:left;">
+        <h1>{{ propostaAtual.medicamentoProposta.nome }}</h1>
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 23px;">{{propostaAtual.medicamentoProposta.rentabilidadeUnitaria}}</h2>
+
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 18px;">{{propostaAtual.medicamentoProposta.rentabilidadePorPaciente}}</h2>
+
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 23px;"> {{propostaAtual.medicamentoProposta.rentabilidadeMensal}}</h2>
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 23px;">{{propostaAtual.medicamentoProposta.rentabilidadeAnual}}</h2>
+      </div>
+    </ion-card>
+    <ion-card style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of propostaAtual.medicamentoProposta.medicamentosLaboratorios">
+      <div style="width:20%;float:left;">
+        <h1>{{ medicamento.nome }}</h1>
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 23px;">{{medicamento.rentabilidadeUnitaria}}</h2>
+
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 18px;">{{medicamento.rentabilidadePorPaciente}}</h2>
+
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 23px;"> {{medicamento.rentabilidadeMensal}}</h2>
+      </div>
+      <div style="width:20%;float:left;">
+        <h2 style="font-size: 23px;">{{medicamento.rentabilidadeAnual}}</h2>
+      </div>
+    </ion-card>
+  </ion-list>
+</div>
