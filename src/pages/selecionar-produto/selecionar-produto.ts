@@ -54,22 +54,20 @@ export class SelecionarProdutoPage {
   realizarComparativo() {
     this.navCtrl.push('RealizarComparativoPage');
   }
-  selecionarProduto() {
-    this.navCtrl.push('SelecionarProdutoPage');
-  }
 
   selecionarClinica(){
     this.navCtrl.push('SelecionarClinicaPage');
   }
 
   checkMedicamento(nome, status) {
+    console.log(nome, status);
     if (status) {
       this.medicamentosList.forEach(x => {
-        if (x.medicamento.nome !== nome && x.medicamento.selecionado) {
+        if (x.medicamento.nome !== nome) {
           x.medicamento.selecionado = false;
         }
         else {
-          console.log("gravando");
+          console.log("gravando",nome, status, x.medicamento.nome);
           console.log(this.propostaAtual);
           this.propostaAtual.medicamento = x.medicamento;
           this.propostaAtualProvider.update(this.propostaAtual);
@@ -78,6 +76,4 @@ export class SelecionarProdutoPage {
       });
     }    
   }
-
-
 }

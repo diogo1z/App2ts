@@ -1,7 +1,6 @@
 import { PropostaMedicamento } from './../../providers/proposta-medicamento/proposta-medicamento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { PropostaMedicamento } from '../../providers/proposta-medicamento/proposta-medicamento';
 import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
 
 

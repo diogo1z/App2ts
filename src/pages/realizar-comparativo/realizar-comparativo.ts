@@ -45,7 +45,9 @@ export class RealizarComparativoPage {
       if (this.proposta.medicamento != null) {
         console.log("if");
         console.log(this.proposta.medicamento);
+        
         this.propostaMedicamento = new PropostaMedicamento();
+        console.log(this.propostaMedicamento.nome);
         this.propostaMedicamento.nome = this.proposta.medicamento.nome;
         this.propostaMedicamento.preco = this.proposta.medicamento.PF0;
         this.propostaMedicamento.precoDesconto = this.proposta.medicamento.PF0;
@@ -83,7 +85,7 @@ export class RealizarComparativoPage {
 
   onChangeDescontoEspecial() {
     this.propostaMedicamento.precoDesconto =
-      this.propostaMedicamento.preco / this.propostaMedicamento.desconto;
+        (this.propostaMedicamento.preco / this.propostaMedicamento.desconto);
   }
 
   calcularValor() {
@@ -111,12 +113,13 @@ export class RealizarComparativoPage {
 
   irParaRentabilidade() {
 
-    this.propostaMedicamento.rentabilidadeUnitaria = this.propostaMedicamento.repasse -
-      this.propostaMedicamento.precoDesconto;
+    this.propostaMedicamento.rentabilidadeUnitaria = (this.propostaMedicamento.precoDesconto -
+      
+      this.propostaMedicamento.repasse);
 
 
     this.propostaMedicamento.rentabilidadePorPaciente =
-      this.proposta.qtdPacientes * this.proposta.usoPorPaciente * this.propostaMedicamento.rentabilidadeUnitaria;
+      (this.proposta.qtdPacientes * this.proposta.usoPorPaciente) * this.propostaMedicamento.rentabilidadeUnitaria;
 
     this.propostaMedicamento.rentabilidadeAnual =
       this.propostaMedicamento.rentabilidadePorPaciente * this.proposta.qtdCiclos;
@@ -124,8 +127,8 @@ export class RealizarComparativoPage {
     this.propostaMedicamento.rentabilidadeMensal = 0;
 
     this.propostaMedicamento.medicamentosLaboratorios.forEach(x => {
-      x.rentabilidadeUnitaria = x.repasse -
-        x.precoDesconto;
+      x.rentabilidadeUnitaria = x.precoDesconto  -
+        x.repasse;
 
       x.rentabilidadePorPaciente =
         this.proposta.qtdPacientes * this.proposta.usoPorPaciente * x.rentabilidadeUnitaria;
