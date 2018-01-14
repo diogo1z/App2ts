@@ -11,7 +11,9 @@ import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-a
 })
 export class ExibirRentabilidadePage {
   propostaAtual: PropostaAtual;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private propostaAtualProvider: PropostaAtualProvider) {    
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private propostaAtualProvider: PropostaAtualProvider) {
     this.propostaAtual = new PropostaAtual();
     this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
     this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];

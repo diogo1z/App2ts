@@ -181,7 +181,7 @@ export class RealizarComparativoPage {
     this.proposta.medicamentoProposta = this.propostaMedicamento;
 
     this.propostaAtualProvider.update(this.proposta);
-
-    this.navCtrl.push('ExibirRentabilidadePage');
+    
+    this.navCtrl.setRoot('ExibirRentabilidadePage', {}, {animate: true, direction: 'forward'});    
   }
 }

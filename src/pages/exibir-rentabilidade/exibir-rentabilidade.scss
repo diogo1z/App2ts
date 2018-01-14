@@ -4,9 +4,9 @@ page-exibir-rentabilidade {
       }
 
       .div-header{
-        border-width: 1px !important;
-        border-color:black !important;
-        border-style: solid !important;
+        border-top-width: 1px !important;
+        border-top-color:black !important;
+        border-top-style: solid !important;
         color: gray !important;
       }
       
@@ -45,5 +45,10 @@ page-exibir-rentabilidade {
         border-bottom-color: gray !important;
         border-bottom-style: outset !important;
         color: gray !important;     
+      }
+
+      .div-rentabilidade-header{
+        background-color:color($colors, roxo) !important; 
+        color: white !important;   
       }
 }
