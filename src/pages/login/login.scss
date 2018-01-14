@@ -8,4 +8,15 @@ page-login {
         //position: absolute;
         height: 100%;
       }
+
+      .text-login{
+        border-radius: 40px;
+        background: transparent;
+        border-width: 0.5px;
+        border-color: white;
+        border-style: groove;
+        margin-left: 35%;
+        width: 30%;
+        text-align: center;
+      }
 }
