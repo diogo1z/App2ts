@@ -88,6 +88,22 @@ $colors: (
   color: color($colors, roxo) !important;
 }
 
+.especial-card{
+  border-left-width: 9px !important;
+  border-left-color:color($colors, laranja) !important;
+  border-left-style: outset !important;
+  border-bottom-color: color($colors, laranja) !important;
+}
+.especial-card-h1{
+  color: color($colors, laranja) !important;
+  font-size: 35px !important;
+}
+
+.normal-card{
+  border-left-width: 9px !important;
+  border-left-color: gray !important;
+  border-left-style: outset !important;
+}
 
 .header {
     display: inline-block !important;

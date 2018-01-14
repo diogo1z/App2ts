@@ -45,7 +45,7 @@ export class RealizarComparativoPage {
       if (this.proposta.medicamento != null) {
         console.log("if");
         console.log(this.proposta.medicamento);
-        
+
         this.propostaMedicamento = new PropostaMedicamento();
         console.log(this.propostaMedicamento.nome);
         this.propostaMedicamento.nome = this.proposta.medicamento.nome;
@@ -61,6 +61,8 @@ export class RealizarComparativoPage {
         this.propostaMedicamento.PF18 = this.proposta.medicamento.PF18;
         this.propostaMedicamento.PF18ALC = this.proposta.medicamento.PF18ALC;
         this.propostaMedicamento.PF20 = this.proposta.medicamento.PF20;
+        this.propostaMedicamento.porcentagemRepasse = 0;
+        this.propostaMedicamento.desconto = 0;
         this.propostaMedicamento.medicamentosLaboratorios = [];
         if (this.proposta.medicamento.laboratoriosMedicamento != null)
           this.proposta.medicamento.laboratoriosMedicamento.forEach(x => {
@@ -68,7 +70,7 @@ export class RealizarComparativoPage {
             novaPropMed.nome = x.nome;
             novaPropMed.preco = x.PF0;
             novaPropMed.precoDesconto = x.PF0;
-            novaPropMed.repasse = x.PF0;        
+            novaPropMed.repasse = x.PF0;
             novaPropMed.PF0 = x.PF0;
             novaPropMed.PF12 = x.PF12;
             novaPropMed.PF17 = x.PF17;
@@ -78,45 +80,74 @@ export class RealizarComparativoPage {
             novaPropMed.PF18 = x.PF18;
             novaPropMed.PF18ALC = x.PF18ALC;
             novaPropMed.PF20 = x.PF20;
+            novaPropMed.porcentagemRepasse = 0;
+            novaPropMed.desconto = 0;
             this.propostaMedicamento.medicamentosLaboratorios.push(novaPropMed);
           });
       }
   }
 
   realizarComparativo() {
-    this.navCtrl.setRoot('RealizarComparativoPage', {}, {animate: true, direction: 'forward'});
-    
+    this.navCtrl.setRoot('RealizarComparativoPage', {}, { animate: true, direction: 'forward' });
+
   }
   selecionarProduto() {
-    this.navCtrl.setRoot('SelecionarProdutoPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('SelecionarProdutoPage', {}, { animate: true, direction: 'forward' });
   }
 
   irGraf() {
-    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, { animate: true, direction: 'forward' });
   }
 
-  selecionarClinica(){
-    this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
+  selecionarClinica() {
+    this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
   calcularValor() {
+    if (this.propostaMedicamento.desconto > 100) {
+      this.propostaMedicamento.desconto = 100;
+    }
+    if (this.propostaMedicamento.desconto < 0) {
+      this.propostaMedicamento.desconto = 0;
+    }
     this.propostaMedicamento.precoDesconto =
-      this.propostaMedicamento.precoDesconto -
+      this.propostaMedicamento.preco -
       (this.propostaMedicamento.preco * (0.01 * this.propostaMedicamento.desconto));
   }
 
   calcularRepasse() {
+    if (this.propostaMedicamento.porcentagemRepasse > 100) {
+      this.propostaMedicamento.porcentagemRepasse = 100;
+    }
+    if (this.propostaMedicamento.porcentagemRepasse < 0) {
+      this.propostaMedicamento.porcentagemRepasse = 0;
+    }
+
     this.propostaMedicamento.repasse =
-      (this.propostaMedicamento.preco * (0.01 * this.propostaMedicamento.porcentagemRepasse));
+      this.propostaMedicamento.preco + (this.propostaMedicamento.preco * (0.01 * this.propostaMedicamento.porcentagemRepasse));
   }
 
 
   calcularRepasseMedicamento(obj) {
-    obj.repasse =
+    if (obj.porcentagemRepasse > 100)
+      obj.porcentagemRepasse = 100;
+
+    if (obj.porcentagemRepasse < 0)
+      obj.porcentagemRepasse = 0;
+
+
+
+    obj.repasse = obj.preco +
       (obj.preco * (0.01 * obj.porcentagemRepasse));
   }
 
   calcularValorMedicamento(obj) {
+    if (obj.desconto > 100)
+      obj.desconto = 100;
+
+    if (obj.desconto < 0)
+      obj.desconto = 0;
+
     obj.precoDesconto =
       obj.preco -
       (obj.preco * (0.01 * obj.desconto));
@@ -124,36 +155,33 @@ export class RealizarComparativoPage {
 
   irParaRentabilidade() {
 
-    this.propostaMedicamento.rentabilidadeUnitaria = (this.propostaMedicamento.precoDesconto -
-      
-      this.propostaMedicamento.repasse);
-
+    this.propostaMedicamento.rentabilidadeUnitaria = (this.propostaMedicamento.repasse - this.propostaMedicamento.precoDesconto);
 
     this.propostaMedicamento.rentabilidadePorPaciente =
-      (this.proposta.qtdPacientes * this.proposta.usoPorPaciente) * this.propostaMedicamento.rentabilidadeUnitaria;
+      this.proposta.usoPorPaciente * this.propostaMedicamento.rentabilidadeUnitaria;
+
+    this.propostaMedicamento.rentabilidadeMensal =
+      this.propostaMedicamento.rentabilidadePorPaciente * this.proposta.qtdPacientes;
 
     this.propostaMedicamento.rentabilidadeAnual =
-      this.propostaMedicamento.rentabilidadePorPaciente * this.proposta.qtdCiclos;
-
-    this.propostaMedicamento.rentabilidadeMensal = 0;
+      this.propostaMedicamento.rentabilidadeMensal * this.proposta.qtdCiclos;
 
     this.propostaMedicamento.medicamentosLaboratorios.forEach(x => {
-      x.rentabilidadeUnitaria = x.precoDesconto  -
-        x.repasse;
+      x.rentabilidadeUnitaria = x.repasse - x.precoDesconto;
 
       x.rentabilidadePorPaciente =
-        this.proposta.qtdPacientes * this.proposta.usoPorPaciente * x.rentabilidadeUnitaria;
+        this.proposta.usoPorPaciente * x.rentabilidadeUnitaria;
+
+      x.rentabilidadeMensal = x.rentabilidadePorPaciente * this.proposta.qtdPacientes;
 
       x.rentabilidadeAnual =
-        x.rentabilidadePorPaciente * this.proposta.qtdCiclos;
-
-      x.rentabilidadeMensal = 0;
+        x.rentabilidadeMensal * this.proposta.qtdCiclos;
     });
 
     this.proposta.medicamentoProposta = this.propostaMedicamento;
 
     this.propostaAtualProvider.update(this.proposta);
-    
+
     this.navCtrl.push('ExibirRentabilidadePage');
   }
 }

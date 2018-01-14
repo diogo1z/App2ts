@@ -25,66 +25,88 @@
 
 
 <div style="float:none;padding-top:10px;">
-  <ion-card style="vertical-align: middle;text-align: center;">
-    <div style="width:20%;float:left;">
+  <ion-card class="div-header" style="vertical-align: middle;text-align: center;">
+    <div class="" style="width:20%;float:left;height:100%;">
       <h1>Rentabilidade</h1>
     </div>
-    <div style="width:20%;float:left;">
+    <div class="header-inside-div" style="width:20%;float:left;height:100%;">
       <h2 style="font-size: 23px;">Rentabilidade
         <br/>unitária</h2>
 
     </div>
-    <div style="width:20%;float:left;">
-      <h2 style="font-size: 18px;">Rentabilidade
+    <div class="header-inside-div" style="margin: 0 0 0 0;width:20%;float:left;height:100%;">
+      <h2 style="font-size: 23px;">Rentabilidade
         <br/>P/ Paciente</h2>
 
     </div>
-    <div style="width:20%;float:left;">
+    <div class="header-inside-div" style="width:20%;height:100%;float:left;">
       <h2 style="font-size: 23px;"> Rentabilidade
         <br/>Mensal </h2>
     </div>
-    <div style="width:20%;float:left;">
+    <div class="header-inside-div" style="width:20%;float:left;height:100%;">
       <h2 style="font-size: 23px;"> Rentabilidade
         <br/>Anual </h2>
     </div>
   </ion-card>
   <ion-list>
-    <ion-card style="vertical-align: middle;text-align: center;">
+    <ion-card class="especial-card" style="vertical-align: middle;text-align: center;">
       <div style="width:20%;float:left;">
-        <h1>{{ propostaAtual.medicamentoProposta.nome }}</h1>
+          &nbsp;&nbsp;<br/>
+        <h1 class="especial-card-h1">{{ propostaAtual.medicamentoProposta.nome }}</h1>
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 23px;">{{propostaAtual.medicamentoProposta.rentabilidadeUnitaria}}</h2>
-
+      <div class="especial-div-rentabilidade-down" style="width:18%;float:left;">
+        <h2 style="font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{propostaAtual.medicamentoProposta.rentabilidadeUnitaria}}</h2>
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 18px;">{{propostaAtual.medicamentoProposta.rentabilidadePorPaciente}}</h2>
-
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 23px;"> {{propostaAtual.medicamentoProposta.rentabilidadeMensal}}</h2>
+      <div class="especial-div-rentabilidade-down" style="width:18%;float:left;">
+        <h2 style="font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{propostaAtual.medicamentoProposta.rentabilidadePorPaciente}}</h2>
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 23px;">{{propostaAtual.medicamentoProposta.rentabilidadeAnual}}</h2>
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
+      </div>
+      <div class="div-rentabilidade-full-especial" style="width:18%;float:left;">
+        <h2 style="color: white!important;font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{propostaAtual.medicamentoProposta.rentabilidadeMensal}}</h2>
+      </div>
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
+      </div>
+      <div class="div-rentabilidade-full-especial" style="width:18%;float:left;">
+        <h2 style="color: white!important;font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{propostaAtual.medicamentoProposta.rentabilidadeAnual}}</h2>
+      </div>
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
       </div>
     </ion-card>
-    <ion-card style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of propostaAtual.medicamentoProposta.medicamentosLaboratorios">
+    <ion-card class="normal-card" style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of propostaAtual.medicamentoProposta.medicamentosLaboratorios">
       <div style="width:20%;float:left;">
+          &nbsp;&nbsp;<br/>
         <h1>{{ medicamento.nome }}</h1>
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 23px;">{{medicamento.rentabilidadeUnitaria}}</h2>
-
+      <div class="div-rentabilidade-down" style="width:18%;float:left;">
+        <h2 style="font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{medicamento.rentabilidadeUnitaria}}</h2>
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 18px;">{{medicamento.rentabilidadePorPaciente}}</h2>
-
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 23px;"> {{medicamento.rentabilidadeMensal}}</h2>
+      <div class="div-rentabilidade-down" style="width:18%;float:left;">
+        <h2 style="font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{medicamento.rentabilidadePorPaciente}}</h2>
       </div>
-      <div style="width:20%;float:left;">
-        <h2 style="font-size: 23px;">{{medicamento.rentabilidadeAnual}}</h2>
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
+      </div>
+      <div class="div-rentabilidade-full" style="width:18%;float:left;">
+        <h2 style="color: white!important;font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{medicamento.rentabilidadeMensal}}</h2>
+      </div>
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
+      </div>
+      <div class="div-rentabilidade-full" style="width:18%;float:left;">
+        <h2 style="color: white!important;font-size: 23px;">&nbsp;&nbsp;<br/>R$ {{medicamento.rentabilidadeAnual}}</h2>
+      </div>
+      <div style="width:2%;float:left;">
+          &nbsp;&nbsp;
       </div>
     </ion-card>
   </ion-list>

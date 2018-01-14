@@ -1,3 +1,49 @@
 page-exibir-rentabilidade {
+    .body, h2,h3,h4,h5, p {
+        color: gray !important;
+      }
 
+      .div-header{
+        border-width: 1px !important;
+        border-color:black !important;
+        border-style: solid !important;
+        color: gray !important;
+      }
+      
+      .header-inside-div{
+        border-left-width: 1px !important;
+        border-left-color:black !important;
+        border-left-style: solid !important;
+        color: gray !important;
+      }
+
+    .especial-div-rentabilidade-down{
+        border-bottom-width: 5px !important;
+        border-bottom-color:color($colors, laranja) !important;
+        border-bottom-style: outset !important;        
+      }
+
+      .div-rentabilidade-full-especial{
+        color: white !important;
+        background-color:color($colors, laranja) !important; 
+        border-bottom-width: 5px !important;
+        border-bottom-color:color($colors, laranja) !important;
+        border-bottom-style: outset !important;        
+      }
+
+      .div-rentabilidade-down{
+        border-bottom-width: 5px !important;
+        border-bottom-color: gray !important;
+        border-bottom-style: outset !important;
+        color: gray !important;
+      }
+
+      .div-rentabilidade-full{
+        background-color: gray !important;
+        color: white !important;   
+        border-bottom-width: 5px !important;
+        border-bottom-color: gray !important;
+        border-bottom-style: outset !important;
+        color: gray !important;     
+      }
 }
