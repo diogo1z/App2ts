@@ -25,18 +25,18 @@
 
 
 <div style="float:none;padding-top:10px;">
-  <ion-card style="vertical-align: middle;">
+  <ion-card class="purple-card" style="vertical-align: middle;">
     <div style="width:22%;float:left;">
-      <h1>Rentabilidade</h1>
+      <h1 class="purple-card-h1">{{propostaAtual.clinica.clinica.nome}}</h1>
     </div>
     <div style="width:78%;float:left;">
-      <h2>{{propostaAtual.clinica.clinica.nome}}</h2>
       <h2>{{propostaAtual.clinica.clinica.endereco}}</h2>
+      <h2>E-mail: {{propostaAtual.clinica.clinica.email}}</h2>
     </div>
   </ion-card>
-  <ion-card style="vertical-align: middle;">
+  <ion-card class="especial-card" style="vertical-align: middle;">
     <div style="width:22%;float:left;">
-      <h1>{{ propostaAtual.medicamentoProposta.nome }}</h1>
+      <h1 class="especial-card-h1">{{ propostaAtual.medicamentoProposta.nome }}</h1>
     </div>
     <div style="width:13%;float:left;">
       <h2>Preço fábrica</h2>

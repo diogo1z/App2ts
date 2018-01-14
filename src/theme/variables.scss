@@ -99,6 +99,17 @@ $colors: (
   font-size: 35px !important;
 }
 
+.purple-card{
+  border-left-width: 9px !important;
+  border-left-color:color($colors, roxo) !important;
+  border-left-style: outset !important;
+  border-bottom-color: color($colors, roxo) !important;
+}
+.purple-card-h1{
+  color: color($colors, roxo) !important;
+  font-size: 35px !important;
+}
+
 .normal-card{
   border-left-width: 9px !important;
   border-left-color: gray !important;

@@ -103,4 +103,9 @@ export class GraficoRentabilidadeAnualPage {
           });
       }
   }
+
+  
+  irExibirProp() {
+    this.navCtrl.setRoot('ExibirPropostaPage', {}, { animate: true, direction: 'forward' });
+  }
 }
