@@ -166,7 +166,11 @@ $colors: (
 
 .img-logo-topo-perfil{
   float: right;
-  height: 50px;
+  height: 50px;  
+}
+
+.img-logo-topo-sonred{
+  filter: invert(100)saturate(100)grayscale(10)contrast(100) !important;
 }
 
 .umterco {

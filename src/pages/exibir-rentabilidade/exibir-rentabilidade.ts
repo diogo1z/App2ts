@@ -60,7 +60,7 @@ export class ExibirRentabilidadePage {
   }
 
   irGraf() {
-    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {proposta: this.propostaAtual}, {animate: true, direction: 'forward'});    
   }
 
   selecionarClinica(){
