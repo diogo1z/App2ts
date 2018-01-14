@@ -116,6 +116,24 @@ $colors: (
   border-left-style: outset !important;
 }
 
+.especial-card-text-block{
+  text-align : center;
+  font-size: 17px;
+  color: gray;
+  border-radius: 5px;
+  border-color: #f06624;
+  border-style: none;
+  width: 90%;
+  text-align: center;
+  padding: 0 0 0 0;
+  background-color: #fce8de;
+}
+
+.especial-card-text-normal{
+  color: color($colors, laranja) !important;
+  font-size: 35px !important;
+}
+
 .header {
     display: inline-block !important;
     height: 240px !important;
