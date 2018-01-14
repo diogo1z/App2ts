@@ -1,6 +1,6 @@
 <ion-header>
 
-    <ion-navbar style="padding: inherit !important;position: relative !important;">
+    <ion-navbar hideBackButton style="padding: inherit !important;position: relative !important;">
       <ion-title style="padding: inherit !important;position: relative !important;">
         <p>
           <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys"/>
@@ -21,5 +21,12 @@
   
   </ion-header>
 
-  <ion-content padding></ion-content>
+  <ion-content padding>
+    <ion-fab right bottom>
+      <button ion-fab color="primary" (click)="irGraf()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+
+  </ion-content>
   

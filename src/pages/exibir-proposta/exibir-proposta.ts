@@ -1,3 +1,4 @@
+import { Clinica, ClinicaList } from './../../providers/clinica/clinica';
 import { PropostaMedicamento } from './../../providers/proposta-medicamento/proposta-medicamento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
@@ -6,15 +7,19 @@ import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-a
 
 @IonicPage()
 @Component({
-  selector: 'page-exibir-rentabilidade',
-  templateUrl: 'exibir-rentabilidade.html',
+  selector: 'page-exibir-proposta',
+  templateUrl: 'exibir-proposta.html',
 })
-export class ExibirRentabilidadePage {
+export class ExibirPropostaPage {
   propostaAtual: PropostaAtual;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private propostaAtualProvider: PropostaAtualProvider) {    
     this.propostaAtual = new PropostaAtual();
+    this.propostaAtual.clinica = new ClinicaList();
+    this.propostaAtual.clinica.clinica = new Clinica();
+    this.propostaAtual.clinica.clinica.nome =  "";
+    this.propostaAtual.clinica.clinica.email = "";
+    this.propostaAtual.clinica.clinica.endereco = "";
     this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
-    this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
   }
 
   ionViewDidLoad() {
@@ -28,27 +33,16 @@ export class ExibirRentabilidadePage {
         {
           this.propostaAtual = new PropostaAtual();
           this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
-          this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
         }
         else 
         {
           if (this.propostaAtual.medicamentoProposta == null)
           {
-            this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
-            this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
-          }
-          else {
-            if (this.propostaAtual.medicamentoProposta.medicamentosLaboratorios == null)
-            {
-              this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
-            }
+            this.propostaAtual.medicamentoProposta = new PropostaMedicamento();            
           }
         }
-        
-        console.log(this.propostaAtual);
       })
-      .catch((e) => console.error(e));
-    ;
+      .catch((e) => console.error(e));    
   }
 
   realizarComparativo() {
@@ -67,4 +61,3 @@ export class ExibirRentabilidadePage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
   }
 }
-

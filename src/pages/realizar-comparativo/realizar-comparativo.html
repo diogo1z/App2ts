@@ -1,23 +1,20 @@
 <ion-header>
 
-  <ion-navbar style="padding: inherit !important;position: relative !important;">
+  <ion-navbar hideBackButton style="padding: inherit !important;position: relative !important;">
     <ion-title style="padding: inherit !important;position: relative !important;">
-      <p>
+      <div style="width:25%;float:left;padding-bottom:30px;">
         <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
-        <img src="../assets/icon/perfil-icon.png" class="img-logo-topo-perfil" /> SIMULADOR DE
-        <br/>
-        <u>
-          <b>OPORTUNIDADES</b> DE NEGOCIOS</u>
-        <br/>
-        <b>ONCOCLINICAS</b>
-
-      </p>
+      </div>
+      <div style="width:50%;float:left;">
+        <img src="../assets/imgs/logo-sonred.png" style="    filter: grayscale(50)contrast(100);height: 50px;" />
+      </div>
+      <div style="width:25%;float:left;">
+        <img src="../assets/icon/perfil-icon.png" style="filter: invert(5);" class="img-logo-topo-perfil" />
+      </div>
       <hr/>
     </ion-title>
-
-    <img src="../assets/icon/clinicas-icon-1.png" class="img-botao-topo-1">
-    <img src="../assets/icon/produtos-icon-1.png" class="img-botao-topo-2">
-
+    <img src="../assets/icon/clinicas-icon-1.png" (click)="selecionarClinica()" class="img-botao-topo-1">
+    <img src="../assets/icon/produtos-icon-1.png" (click)="selecionarProduto()" class="img-botao-topo-2">
     <img src="../assets/icon/comparativo-icon-1.png" style="filter: sepia(50%)grayscale(70%)brightness(160%);" class="img-botao-topo-3">
 
   </ion-navbar>
@@ -118,9 +115,13 @@
     </ion-list>
   </div>
 
-  <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="irParaRentabilidade()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-fab>
 </ion-content>
+<ion-footer style="background-color:#522e91;">
+
+  <div style="width:95%;float:left;">&nbsp;</div>
+  <div style="width:5%;float:left;">
+    <button right ion-fab color="roxo" style="float:right" (click)="irParaRentabilidade()">
+      >
+    </button>
+  </div>
+</ion-footer>

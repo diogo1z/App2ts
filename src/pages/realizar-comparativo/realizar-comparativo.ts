@@ -83,9 +83,20 @@ export class RealizarComparativoPage {
       }
   }
 
-  onChangeDescontoEspecial() {
-    this.propostaMedicamento.precoDesconto =
-        (this.propostaMedicamento.preco / this.propostaMedicamento.desconto);
+  realizarComparativo() {
+    this.navCtrl.setRoot('RealizarComparativoPage', {}, {animate: true, direction: 'forward'});
+    
+  }
+  selecionarProduto() {
+    this.navCtrl.setRoot('SelecionarProdutoPage', {}, {animate: true, direction: 'forward'});    
+  }
+
+  irGraf() {
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, {animate: true, direction: 'forward'});    
+  }
+
+  selecionarClinica(){
+    this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
   }
 
   calcularValor() {

@@ -50,13 +50,21 @@ export class SelecionarProdutoPage {
     else
       this.getAllMedicamentos();
   }
-
+  
   realizarComparativo() {
-    this.navCtrl.push('RealizarComparativoPage');
+    this.navCtrl.setRoot('RealizarComparativoPage', {}, {animate: true, direction: 'forward'});
+    
+  }
+  selecionarProduto() {
+    this.navCtrl.setRoot('SelecionarProdutoPage', {}, {animate: true, direction: 'forward'});    
+  }
+
+  irGraf() {
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, {animate: true, direction: 'forward'});    
   }
 
   selecionarClinica(){
-    this.navCtrl.push('SelecionarClinicaPage');
+    this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
   }
 
   checkMedicamento(nome, status) {
