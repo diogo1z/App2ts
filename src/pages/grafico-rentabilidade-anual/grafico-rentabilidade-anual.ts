@@ -13,6 +13,7 @@ export class GraficoRentabilidadeAnualPage {
   nomes = [];
   anuais = [];
   mensais = [];
+  nomeClinica;
   myChart;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private propostaAtualProvider: PropostaAtualProvider) {    
     this.propostaAtual = new PropostaAtual();
@@ -49,6 +50,7 @@ export class GraficoRentabilidadeAnualPage {
       .then((result) => {
         console.log(result);
         this.propostaAtual = result;
+        this.nomeClinica = result.clinica.clinica.nome;
         this.nomes.push(result.medicamentoProposta.nome + " Margem anual R$" + 
         Math.round(result.medicamentoProposta.rentabilidadeAnual));
         this.anuais.push(result.medicamentoProposta.rentabilidadeAnual);

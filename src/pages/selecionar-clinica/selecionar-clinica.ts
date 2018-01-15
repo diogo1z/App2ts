@@ -12,6 +12,7 @@ export class SelecionarClinicaPage {
   clinicas: ClinicaList[];
   textoBuscaClinica: string = null;
   propostaAtual: PropostaAtual;
+  nomeClinica;
   constructor(public navCtrl: NavController, private toast: ToastController, private clinicasProvider: ClinicaProvider, private propostaAtualProvider: PropostaAtualProvider) { }
 
   ionViewDidLoad() {
@@ -76,19 +77,15 @@ export class SelecionarClinicaPage {
   checkClinica(nome, status) {
     if (status) {
       this.clinicas.forEach(x => {
-        if (x.clinica.nome !== nome && x.clinica.selecionado) {
+        if (x.clinica.nome !== nome) {
           x.clinica.selecionado = false;
         }
         else {
           this.propostaAtual.clinica = x;
+          this.nomeClinica = x.clinica.nome;
           this.propostaAtualProvider.update(this.propostaAtual);
         }
       });
     }
-    else {
-      this.propostaAtual.clinica = null;
-      this.propostaAtualProvider.update(this.propostaAtual);
-    }
   }
-  
 }

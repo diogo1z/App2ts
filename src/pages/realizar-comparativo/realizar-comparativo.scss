@@ -2,11 +2,16 @@ page-realizar-comparativo {
     .body, h2,h3,h4,h5, p {
         color: gray !important;
       }
+      .text-input-md{
+          margin:0 0 0 0!important;
+          text-align: center !important;
+      }
+
       
 
       .normal-card-text-block{
         text-align : center;
-        font-size: 17px;
+        font-size: 25px!important;
         color: gray;
         border-radius: 5px;
         background-color: #dbdede;        

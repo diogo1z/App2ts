@@ -12,8 +12,12 @@ export class SelecionarProdutoPage {
   medicamentosList: MedicamentoList[];
   textoBuscaMedicamento: string = null;
   propostaAtual: PropostaAtual;
+  nomeClinica: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
-    private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider) { }
+    private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider) 
+    { 
+      
+    }
 
   ionViewDidLoad() {
     this.getAllMedicamentos();
@@ -24,6 +28,7 @@ export class SelecionarProdutoPage {
     this.propostaAtualProvider.get()
       .then((result) => {
         this.propostaAtual = result;
+        this.nomeClinica = result.clinica.clinica.nome;
         console.log(this.propostaAtual);
       })
       .catch((e) => console.error(e));

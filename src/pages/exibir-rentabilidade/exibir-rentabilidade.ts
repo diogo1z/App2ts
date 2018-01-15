@@ -11,6 +11,7 @@ import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-a
 })
 export class ExibirRentabilidadePage {
   propostaAtual: PropostaAtual;
+  nomeClinica;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private propostaAtualProvider: PropostaAtualProvider) {
@@ -25,6 +26,7 @@ export class ExibirRentabilidadePage {
   getProposta() {
     this.propostaAtualProvider.get()
       .then((result) => {
+        this.nomeClinica = result.clinica.clinica.nome;
         this.propostaAtual = result;
         if (this.propostaAtual == null)
         {

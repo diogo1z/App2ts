@@ -84,7 +84,7 @@ $colors: (
 
 //@import "ionic.theme.default";
 .body{
-  padding: 5px,10,5px,10px; 
+  padding: 25px,10,5px,10px !important; 
 }
 
 .body, h1,h2,h3,h4,h5, p {
@@ -102,7 +102,7 @@ $colors: (
 }
 .especial-card-h1{
   color: color($colors, laranja) !important;
-  font-size: 35px !important;
+  font-size: 30px !important;
 }
 
 .purple-card{
