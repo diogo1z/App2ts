@@ -62,7 +62,7 @@ export class ExibirPropostaPage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
   }
 
-  ndEmail() {
+  sendEmail() {
     let email = {
       to: '',
       cc: '',
@@ -74,11 +74,11 @@ export class ExibirPropostaPage {
 '<p>T: +55 11 5894 2343</p>' + 
 '<p>F: +55 11 5891 7759</p>' + 
 '<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></p>' + 
-'<p>S&atilde;o Paulo, XXX de XXXXde 2017.</p>' + 
 '<p><strong>&nbsp;</strong></p>' + 
 '<p><strong>Prezados Senhores,</strong></p>' + 
 '<p><strong>&nbsp;</strong></p>' + 
-'<p>Com o objetivo de estabelecer uma parceria s&oacute;lida com o (XXXXXXXXXX Nome clinica)<strong>,</strong> refor&ccedil;amos a nossa garantia de supply sem nenhuma ruptura, o nosso interesse em apoi&aacute;-los em projetos de educa&ccedil;&atilde;o m&eacute;dica continuada, assim como oferecer acesso a medicamentos oncol&oacute;gicos a nossos pacientes. Desta forma segue proposta comercial.</p>' + 
+'<p>Com o objetivo de estabelecer uma parceria s&oacute;lida com o ' +
+'<strong>' + this.propostaAtual.clinica.clinica.nome + ',</strong> refor&ccedil;amos a nossa garantia de supply sem nenhuma ruptura, o nosso interesse em apoi&aacute;-los em projetos de educa&ccedil;&atilde;o m&eacute;dica continuada, assim como oferecer acesso a medicamentos oncol&oacute;gicos a nossos pacientes. Desta forma segue proposta comercial.</p>' + 
 '<p>&nbsp;</p>' + 
 '<table width="600">' + 
 '<tbody>' + 
@@ -107,79 +107,25 @@ export class ExibirPropostaPage {
 '</tr>' + 
 '<tr>' + 
 '<td width="85">' + 
-'<p><strong>Bortezomibe</strong></p>' + 
+'<p><strong>' + this.propostaAtual.medicamentoProposta.nome + '</strong></p>' + 
 '</td>' + 
 '<td width="85">' + 
-'<p><strong>2.766</strong></p>' + 
+'<p><strong>R$ ' + this.propostaAtual.medicamentoProposta.preco + '</strong></p>' + 
 '</td>' + 
 '<td width="85">' + 
-'<p><strong>49%</strong></p>' + 
+'<p><strong>' + this.propostaAtual.medicamentoProposta.desconto + '%</strong></p>' + 
 '</td>' + 
 '<td width="85">' + 
-'<p><strong>1.411</strong></p>' + 
+'<p><strong>R$ ' + this.propostaAtual.medicamentoProposta.precoDesconto + '</strong></p>' + 
 '</td>' + 
 '<td width="87">' + 
-'<p><strong>1.355</strong></p>' + 
+'<p><strong>R$ '+ this.propostaAtual.medicamentoProposta.rentabilidadeUnitaria +'</strong></p>' + 
 '</td>' + 
 '<td width="85">' + 
-'<p><strong>300</strong></p>' + 
+'<p><strong>'+this.propostaAtual.qtdCiclos+'</strong></p>' + 
 '</td>' + 
 '<td width="87">' + 
-'<p><strong>406.636</strong></p>' + 
-'</td>' + 
-'</tr>' + 
-'<tr>' + 
-'<td width="85">' + 
-'<p><strong>Cabazitaxel</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>16.786</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>70%</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>5.036</strong></p>' + 
-'</td>' + 
-'<td width="87">' + 
-'<p><strong>11.750</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>28</strong></p>' + 
-'</td>' + 
-'<td width="87">' + 
-'<p><strong>329.006</strong></p>' + 
-'</td>' + 
-'</tr>' + 
-'<tr>' + 
-'<td width="85">' + 
-'<p><strong>Decitabina</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>4.235</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>55%</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>1.906</strong></p>' + 
-'</td>' + 
-'<td width="87">' + 
-'<p><strong>2.329</strong></p>' + 
-'</td>' + 
-'<td width="85">' + 
-'<p><strong>40</strong></p>' + 
-'</td>' + 
-'<td width="87">' + 
-'<p><strong>93.168</strong></p>' + 
-'</td>' + 
-'</tr>' + 
-'<tr>' + 
-'<td colspan="6" width="513">' + 
-'<p><strong>Total</strong></p>' + 
-'</td>' + 
-'<td width="87">' + 
-'<p><strong>828.809</strong></p>' + 
+'<p><strong>R$ '+ this.propostaAtual.medicamentoProposta.rentabilidadeMensal + '</strong></p>' + 
 '</td>' + 
 '</tr>' + 
 '</tbody>' + 
@@ -191,9 +137,7 @@ export class ExibirPropostaPage {
 '<p><em>4) Proposta v&aacute;lida at&eacute; 15/01.</em></p>' + 
 '<p>&nbsp;</p>' + 
 '<p>Atenciosamente,</p>' + 
-'<p>&nbsp;</p>' + 
-'<p>XXXXXXX</p>' + 
-'<p>Colocar automaticamente o nome do consultor</p>'
+'<p>&nbsp;</p>'
       ,
       isHtml: true
     };
