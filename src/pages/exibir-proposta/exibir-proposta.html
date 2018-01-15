@@ -51,28 +51,28 @@
       </div>
       <div style="width:13%;float:left;">
         <h2>Preço fábrica</h2>
-        <ion-input class="especial-card-text-block" readonly="true" type="number" name="preco" [(ngModel)]="propostaAtual.medicamentoProposta.preco"></ion-input>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R$ {{propostaAtual.medicamentoProposta.preco}}</h3>
       </div>
       <div style="width:12%;float:left;">
         <h2>Desconto</h2>
-        <ion-input class="textbox-redondo-e-branco" style="font-size: 17px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
-          type="number" name="desconto" readonly="true" [(ngModel)]="propostaAtual.medicamentoProposta.desconto"></ion-input>
+        <h3 style="font-size: 22px;color:gray!important;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;font-size: 24px;"
+        class="textbox-redondo-e-branco">{{propostaAtual.medicamentoProposta.desconto}} %</h3>        
       </div>
       <div style="width:13%;float:left;">
         <h2>Preço c/ desconto</h2>
-        <ion-input class="especial-card-text-block" readonly="true" type="number" name="preco" [(ngModel)]="propostaAtual.medicamentoProposta.precoDesconto"></ion-input>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R$ {{propostaAtual.medicamentoProposta.precoDesconto}}</h3>        
       </div>
       <div style="width:13%;float:left;">
         <h2>Rent. unitária</h2>
-        <ion-input class="especial-card-text-block" readonly="true" type="number" name="preco" [(ngModel)]="propostaAtual.medicamentoProposta.rentabilidadeUnitaria"></ion-input>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R$ {{propostaAtual.medicamentoProposta.rentabilidadeUnitaria}}</h3>
       </div>
       <div style="width:12%;float:left;">
         <h2>Consumo mês</h2>
-        <ion-input class="especial-card-text-block" readonly="true" type="number" name="preco" [(ngModel)]="propostaAtual.qtdCiclos"></ion-input>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">{{propostaAtual.qtdCiclos}}</h3>        
       </div>
       <div style="width:13%;float:left;">
         <h2>Rent. Mensal</h2>
-        <ion-input class="especial-card-text-block" readonly="true" type="number" name="preco" [(ngModel)]="propostaAtual.medicamentoProposta.rentabilidadeMensal"></ion-input>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">{{propostaAtual.medicamentoProposta.rentabilidadeMensal}}</h3>        
       </div>
     </ion-card>
   </div>
