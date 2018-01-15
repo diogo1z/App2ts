@@ -101,6 +101,13 @@ export class MedicamentoProvider {
     medicamento40.laboratoriosMedicamento.push(medicamento41); 
     this.insert(medicamento40);
 
+    var medicamento27 = new Medicamento();medicamento27.nome = "REDTIBIN";medicamento27.principioAtivo = "REDTIBIN";medicamento27.PF0 = 4234.90;medicamento27.PF12 = 4812.38;medicamento27.PF17 = 5102.29;medicamento27.PF17ALC = 5102.29;medicamento27.PF175  = 5133.21;medicamento27.PF175ALC  = 5133.21;medicamento27.PF18  = 5164.51;medicamento27.PF18ALC  = 5164.51;medicamento27.PF20  = 5293.62;
+
+    var medicamento26 = new Medicamento(); medicamento26.nome = "JANSSEN-CILAG FARMACÊUTICA LTDA"; medicamento26.principioAtivo = "DACOGEN"; medicamento26.PF0 = 4234.91; medicamento26.PF12 = 4812.39; medicamento26.PF17 = 5102.30; medicamento26.PF17ALC = 5102.30; medicamento26.PF175 = 5133.22; medicamento26.PF175ALC = 5133.22; medicamento26.PF18 = 5164.52; medicamento26.PF18ALC = 5164.52; medicamento26.PF20 = 5293.63
+    medicamento27.laboratoriosMedicamento = []; 
+    medicamento27.laboratoriosMedicamento.push(medicamento26); 
+    this.insert(medicamento27);
+    
   }
 }
 

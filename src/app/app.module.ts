@@ -16,6 +16,7 @@ import { PropostaProvider } from '../providers/proposta/proposta';
 import { PropostaMedicamentoProvider } from '../providers/proposta-medicamento/proposta-medicamento';
 import { PropostaAtualProvider } from '../providers/proposta-atual/proposta-atual';
 
+import { EmailComposer } from '@ionic-native/email-composer';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
@@ -51,6 +52,7 @@ registerLocaleData(localePt, 'pt-BR');
     { provide: LOCALE_ID, useValue: 'pt-BR ' },
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
+    EmailComposer,
     ContactProvider,
     MedicamentoProvider,
     ClinicaProvider,

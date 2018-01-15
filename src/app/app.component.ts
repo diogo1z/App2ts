@@ -28,10 +28,10 @@ export class MyApp {
         console.log('Fez a busca');
         console.log(result.length);
         if (result.length < 20){
-          medicamentoProvider.carregarDadosIniciais();
+          //medicamentoProvider.carregarDadosIniciais();
           clinicaProvider.carregarDadosIniciais();
         }
-        
+        medicamentoProvider.carregarDadosIniciais();
       })
       .catch((e) => console.error(e));;
     });
