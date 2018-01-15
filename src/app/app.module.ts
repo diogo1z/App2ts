@@ -28,7 +28,16 @@ registerLocaleData(localePt, 'pt-BR');
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      platforms : {
+        ios : {
+          // These options are available in ionic-angular@2.0.0-beta.2 and up.
+          scrollAssist: false,    // Valid options appear to be [true, false]
+          autoFocusAssist: false  // Valid options appear to be ['instant', 'delay', false]
+        }
+        // http://ionicframework.com/docs/v2/api/config/Config/)
+      }
+    }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
