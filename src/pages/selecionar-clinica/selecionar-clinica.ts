@@ -82,7 +82,6 @@ export class SelecionarClinicaPage {
         else {
           this.propostaAtual.clinica = x;
           this.propostaAtualProvider.update(this.propostaAtual);
-          console.log(this.propostaAtual);
         }
       });
     }

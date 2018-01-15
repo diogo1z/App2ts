@@ -50,21 +50,21 @@ export class SelecionarProdutoPage {
     else
       this.getAllMedicamentos();
   }
-  
+
   realizarComparativo() {
-    this.navCtrl.setRoot('RealizarComparativoPage', {}, {animate: true, direction: 'forward'});
-    
+    this.navCtrl.setRoot('RealizarComparativoPage', {}, { animate: true, direction: 'forward' });
+
   }
   selecionarProduto() {
-    this.navCtrl.setRoot('SelecionarProdutoPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('SelecionarProdutoPage', {}, { animate: true, direction: 'forward' });
   }
 
   irGraf() {
-    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, { animate: true, direction: 'forward' });
   }
 
-  selecionarClinica(){
-    this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
+  selecionarClinica() {
+    this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
   checkMedicamento(nome, status) {
@@ -75,13 +75,18 @@ export class SelecionarProdutoPage {
           x.medicamento.selecionado = false;
         }
         else {
-          console.log("gravando",nome, status, x.medicamento.nome);
+          console.log("gravando", nome, status, x.medicamento.nome);
           console.log(this.propostaAtual);
+          if (this.propostaAtual == null)
+            this.propostaAtual = new PropostaAtual();
+            
+          if (this.propostaAtual.medicamento == null)
+            this.propostaAtual.medicamento = new Medicamento();
           this.propostaAtual.medicamento = x.medicamento;
           this.propostaAtualProvider.update(this.propostaAtual);
           console.log(this.propostaAtual);
         }
       });
-    }    
+    }
   }
 }

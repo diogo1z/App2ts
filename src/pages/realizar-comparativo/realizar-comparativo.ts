@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { PropostaMedicamento } from './../../providers/proposta-medicamento/proposta-medicamento';
 import { PropostaAtualProvider } from './../../providers/proposta-atual/proposta-atual';
 import { Proposta } from './../../providers/proposta/proposta';
@@ -14,7 +15,7 @@ export class RealizarComparativoPage {
   proposta: PropostaAtual;
   propostaMedicamento: PropostaMedicamento;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private propostaAtualProvider: PropostaAtualProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private datePipe: DatePipe, private propostaAtualProvider: PropostaAtualProvider) {
     this.propostaMedicamento = new PropostaMedicamento();
     this.proposta = new PropostaAtual();
     this.propostaMedicamento.medicamentosLaboratorios = [];

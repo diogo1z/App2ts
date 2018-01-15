@@ -49,11 +49,13 @@ export class GraficoRentabilidadeAnualPage {
       .then((result) => {
         console.log(result);
         this.propostaAtual = result;
-        this.nomes.push(result.medicamentoProposta.nome);
+        this.nomes.push(result.medicamentoProposta.nome + " Margem anual R$" + 
+        Math.round(result.medicamentoProposta.rentabilidadeAnual));
         this.anuais.push(result.medicamentoProposta.rentabilidadeAnual);
         this.mensais.push(result.medicamentoProposta.rentabilidadeMensal);
         result.medicamentoProposta.medicamentosLaboratorios.forEach(x => {
-          this.nomes.push(x.nome);
+          this.nomes.push(x.nome + " Margem anual R$" + 
+          Math.round(x.rentabilidadeAnual));
           this.anuais.push(x.rentabilidadeAnual);
           this.mensais.push(x.rentabilidadeMensal);
         });
@@ -104,6 +106,17 @@ export class GraficoRentabilidadeAnualPage {
       }
   }
 
+  selecionarProduto() {
+    this.navCtrl.setRoot('SelecionarProdutoPage', {}, { animate: true, direction: 'forward' });
+  }
+
+  irGraf() {
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, { animate: true, direction: 'forward' });
+  }
+
+  selecionarClinica() {
+    this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
+  }
   
   irExibirProp() {
     this.navCtrl.setRoot('ExibirPropostaPage', {}, { animate: true, direction: 'forward' });

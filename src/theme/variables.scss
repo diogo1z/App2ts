@@ -83,16 +83,22 @@ $colors: (
 // default are overridden.
 
 //@import "ionic.theme.default";
+.body{
+  padding: 5px,10,5px,10px; 
+}
 
 .body, h1,h2,h3,h4,h5, p {
   color: color($colors, roxo) !important;
+  
 }
+
 
 .especial-card{
   border-left-width: 9px !important;
   border-left-color:color($colors, laranja) !important;
   border-left-style: outset !important;
   border-bottom-color: color($colors, laranja) !important;
+  padding: 5px;
 }
 .especial-card-h1{
   color: color($colors, laranja) !important;
@@ -104,6 +110,7 @@ $colors: (
   border-left-color:color($colors, roxo) !important;
   border-left-style: outset !important;
   border-bottom-color: color($colors, roxo) !important;
+  padding: 5px;
 }
 .purple-card-h1{
   color: color($colors, roxo) !important;
@@ -114,6 +121,7 @@ $colors: (
   border-left-width: 9px !important;
   border-left-color: gray !important;
   border-left-style: outset !important;
+  padding: 5px;
 }
 
 .especial-card-text-block{
@@ -149,6 +157,9 @@ $colors: (
 
 .toolbar-background , .toolbar-background-md{
   background: linear-gradient(#522e91 70%,white 50%) !important;
+}
+.toolbar-title, .toolbar-title-md{
+  padding-top: 15px!important;
 }
 .toolbar-ios, .ion-title{
     
@@ -199,6 +210,7 @@ $colors: (
   border: 1px solid #e6dcdc;
   z-index:1;
   margin: -10px 0px 0px 0px;
+  height: 110px!important;
 }
 .img-botao-topo-3{
   float: right;
@@ -206,16 +218,15 @@ $colors: (
 
 .img-logo-topo-drreddys{
   float: left;
-  height: 50px;
+  height: 50px !important;
 }
 
 .img-logo-topo-perfil{
   float: right;
-  height: 50px;  
+  height: 50px !important;
 }
 
-.img-logo-topo-sonred{
-  filter: invert(100)saturate(100)grayscale(10)contrast(100) !important;
+.img-logo-topo-sonred{  
 }
 
 .umterco {
