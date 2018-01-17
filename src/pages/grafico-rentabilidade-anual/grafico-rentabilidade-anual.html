@@ -2,6 +2,7 @@
 
   <ion-navbar hideBackButton style="padding: inherit !important;position: relative !important;">
     <ion-title style="padding: inherit !important;position: relative !important;">
+      <div style="height:20px;background-color:#522e91;">&nbsp;</div>
       <div style="width:25%;float:left;padding-bottom:30px;">
         <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
       </div>
@@ -12,7 +13,7 @@
       <div style="width:25%;float:left;">
         <img src="../assets/icon/perfil-icon-roxo-01.png" class="img-logo-topo-perfil" />
       </div>
-      <hr style="width:100%;color:white"/>  
+      <hr style="width:100%;color:white" />
     </ion-title>
 
     <img src="../assets/icon/clinicas-icon-1.png" (click)="selecionarClinica()" class="img-botao-topo-1">
@@ -31,15 +32,14 @@
 </ion-content>
 
 <ion-footer style="height:10%;background-color:#522e91;">
-    <div (click)="voltarParaRentabilidade()" style="border-right-style: outset;border-right-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
-        VOLTAR
-      </div>
+  <div (click)="voltarParaRentabilidade()" style="border-right-style: outset;border-right-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
+    VOLTAR
+  </div>
   <div style="width:60%;float:left;">
     &nbsp;
   </div>
   <div (click)="irExibirProp()" style="border-left-style: outset;border-left-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
-    <img style="height:40px;" src="../assets/icon/proposta-icon-branco-01.png" />
-     PROPOSTA
+    <img style="height:40px;" src="../assets/icon/proposta-icon-branco-01.png" /> PROPOSTA
   </div>
 
 </ion-footer>
