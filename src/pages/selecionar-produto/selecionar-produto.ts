@@ -88,6 +88,9 @@ export class SelecionarProdutoPage {
           if (this.propostaAtual.medicamento == null)
             this.propostaAtual.medicamento = new Medicamento();
           this.propostaAtual.medicamento = x.medicamento;
+          this.propostaAtual.qtdCiclos = 1;
+          this.propostaAtual.qtdPacientes = 1;
+          this.propostaAtual.usoPorPaciente = 1;
           this.propostaAtualProvider.update(this.propostaAtual);
           console.log(this.propostaAtual);
         }
