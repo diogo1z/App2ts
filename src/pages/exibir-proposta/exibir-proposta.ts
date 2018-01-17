@@ -65,7 +65,7 @@ export class ExibirPropostaPage {
   sendEmail() {
     let email = {
       to: '',
-      cc: '',
+      cc: 'gerente@gerente.com.br',
       attachments: [
       ],
       subject: 'Proposta Dr. Reddy’s ',

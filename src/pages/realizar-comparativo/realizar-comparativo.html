@@ -32,7 +32,7 @@
   </div>
 
   <div style="width:16%;float:left;">
-    <h1>Usos por pacientes</h1>
+    <h1>Quantidade mensal por paciente</h1>
   </div>
   <div style="width:16%;float:left;">
     <ion-input [(ngModel)]="proposta.usoPorPaciente" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
@@ -63,7 +63,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Desconto</h2>
-          <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
+          <ion-input class="textbox-redondo-e-branco" readonly="true" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
             type="number" name="desconto" (change)=calcularValor() [(ngModel)]="propostaMedicamento.desconto"></ion-input>
 
         </div>
@@ -116,12 +116,10 @@
   </div>
 
 </ion-content>
-<ion-footer style="background-color:#522e91;">
 
-  <div style="width:95%;float:left;">&nbsp;</div>
-  <div style="width:5%;float:left;">
-    <button right ion-fab color="roxo" style="float:right" (click)="irParaRentabilidade()">
-      >
-    </button>
+<ion-footer style="height:10%;background-color:#522e91;">
+  <div style="width:80%;float:left;">&nbsp;</div>
+  <div (click)="irParaRentabilidade()" style="border-left-style: outset;border-left-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
+    PRÓXIMO
   </div>
 </ion-footer>

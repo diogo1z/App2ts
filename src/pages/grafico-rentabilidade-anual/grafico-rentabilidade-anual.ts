@@ -29,7 +29,8 @@ export class GraficoRentabilidadeAnualPage {
         text: ''
       },
       xAxis: {
-        categories: this.nomes//['CABAZRED', 'SANOFI-AVENTIS', 'EUROFARMA']
+        categories: this.nomes,//['CABAZRED', 'SANOFI-AVENTIS', 'EUROFARMA']
+        fontSize: "20px"
       },
       yAxis: {
         title: {
@@ -123,4 +124,9 @@ export class GraficoRentabilidadeAnualPage {
   irExibirProp() {
     this.navCtrl.setRoot('ExibirPropostaPage', {}, { animate: true, direction: 'forward' });
   }
+
+  voltarParaRentabilidade() {
+    this.navCtrl.setRoot('ExibirRentabilidadePage', {}, { animate: true, direction: 'forward' });
+  }
+
 }

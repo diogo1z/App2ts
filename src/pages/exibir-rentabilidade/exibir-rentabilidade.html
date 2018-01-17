@@ -137,14 +137,13 @@
   </div>
 </ion-content>
 
-<ion-footer style="background-color:#522e91;">
+<ion-footer style="height:10%;background-color:#522e91;">
+    <div (click)="realizarComparativo()" style="border-right-style: outset;border-right-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
+        VOLTAR
+      </div>
 
-  <div style="width:95%;float:left;">
-    &nbsp;
-  </div>
-  <div style="width:5%;float:left;">
-    <button right ion-fab color="roxo" (click)="irGraf()">
-      >
-    </button>
+  <div style="width:60%;float:left;">&nbsp;</div>
+  <div (click)="irGraf()" style="border-left-style: outset;border-left-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
+    PRÓXIMO
   </div>
 </ion-footer>

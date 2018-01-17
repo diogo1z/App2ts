@@ -103,7 +103,7 @@ export class ClinicaProvider {
     var clinica99 = new Clinica(); clinica99.nome = "HOSPITAL NAVAL DE LADARIO"; clinica99.endereco = "LADARIO" + " - MS"; this.insert(clinica99);
     var clinica100 = new Clinica(); clinica100.nome = "HOSPITAL NAVAL DE NATAL"; clinica100.endereco = "NATAL" + " - RN"; this.insert(clinica100);
     var clinica101 = new Clinica(); clinica101.nome = "HOSPITAL NAVAL DE RECIFE"; clinica101.endereco = "RECIFE" + " - PE"; this.insert(clinica101);
-    /*var clinica102 = new Clinica(); clinica102.nome = "HOSPITAL NAVAL MARCILIO DIAS"; clinica102.endereco = "RIO DE JANEIRO" + " - RJ"; this.insert(clinica102);
+    var clinica102 = new Clinica(); clinica102.nome = "HOSPITAL NAVAL MARCILIO DIAS"; clinica102.endereco = "RIO DE JANEIRO" + " - RJ"; this.insert(clinica102);
     var clinica103 = new Clinica(); clinica103.nome = "MINISTERIO DA SAUDE"; clinica103.endereco = "BRASILIA" + " - DF"; this.insert(clinica103);
     var clinica104 = new Clinica(); clinica104.nome = "INSTITUTO NACIONAL DE CANCER"; clinica104.endereco = "RIO DE JANEIRO" + " - RJ"; this.insert(clinica104);
     var clinica105 = new Clinica(); clinica105.nome = "HOSPITAL GERAL DO ANDARAI/RJ"; clinica105.endereco = "RIO DE JANEIRO" + " - RJ"; this.insert(clinica105);
@@ -331,7 +331,7 @@ export class ClinicaProvider {
     var clinica327 = new Clinica(); clinica327.nome = "SAUDE-MS"; clinica327.endereco = "CAMPO GRANDE" + " - MS"; this.insert(clinica327);
     var clinica328 = new Clinica(); clinica328.nome = "CLINICA CION"; clinica328.endereco = "BELEM" + " - PA"; this.insert(clinica328);
     var clinica329 = new Clinica(); clinica329.nome = "HOSPITAL ALBERT SABIN"; clinica329.endereco = "ATIBAIA" + " - SP"; this.insert(clinica329);
-    var clinica330 = new Clinica(); clinica330.nome = "HOSP DE JAGUARIUNA"; clinica330.endereco = "JAGUARIUNA" + " - SP"; this.insert(clinica330);
+    /*var clinica330 = new Clinica(); clinica330.nome = "HOSP DE JAGUARIUNA"; clinica330.endereco = "JAGUARIUNA" + " - SP"; this.insert(clinica330);
     var clinica331 = new Clinica(); clinica331.nome = "CLIN ONCO PSICO ANETE"; clinica331.endereco = "SAO PAULO" + " - SP"; this.insert(clinica331);
     var clinica332 = new Clinica(); clinica332.nome = "HOSPITAL CASSEMS"; clinica332.endereco = "NOVA ANDRADINA" + " - MS"; this.insert(clinica332);
     var clinica333 = new Clinica(); clinica333.nome = "HOSPITAL CASSEMS UNIDADE DE TRES LAGOAS"; clinica333.endereco = "TRES LAGOAS" + " - MS"; this.insert(clinica333);
