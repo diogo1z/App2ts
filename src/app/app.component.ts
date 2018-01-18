@@ -1,3 +1,4 @@
+import { UsuarioProvider } from './../providers/usuario/usuario';
 import { MedicamentoProvider, Medicamento } from './../providers/medicamento/medicamento';
 import { ClinicaProvider, Clinica } from './../providers/clinica/clinica';
 import { Component } from '@angular/core';
@@ -14,7 +15,7 @@ export class MyApp {
   rootPage:any = null;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-    medicamentoProvider: MedicamentoProvider, clinicaProvider: ClinicaProvider) {
+    medicamentoProvider: MedicamentoProvider, clinicaProvider: ClinicaProvider, usuarioProvider: UsuarioProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -37,6 +38,8 @@ export class MyApp {
           clinicaProvider.carregarDadosIniciais();
         }
         medicamentoProvider.carregarDadosIniciais();
+        usuarioProvider.carregarDadosIniciais();
+        
       })
       .catch((e) => console.error(e));;
     });

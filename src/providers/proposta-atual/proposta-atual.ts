@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import { PropostaMedicamentoList, PropostaMedicamento } from '../proposta-medicamento/proposta-medicamento';
+import { Usuario } from '../usuario/usuario';
 
 @Injectable()
 export class PropostaAtualProvider {
@@ -40,6 +41,7 @@ export class PropostaAtualProvider {
  
 export class PropostaAtual {
   clinica : ClinicaList;
+  usuario : Usuario;
   qtdCiclos : number;
   qtdPacientes : number;
   usoPorPaciente : number;

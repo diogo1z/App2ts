@@ -65,6 +65,9 @@ export class PropostaMedicamento {
   PF18: number;
   PF18ALC: number;
   PF20: number;
+  maxDescontoKAM : number;
+  maxDescontoGER : number;
+  maxDescontoADM : number;
 }
 
 export class PropostaMedicamentoList {

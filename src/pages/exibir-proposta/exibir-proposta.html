@@ -2,7 +2,7 @@
 
   <ion-navbar hideBackButton style="padding: inherit !important;position: relative !important;">
     <ion-title style="padding: inherit !important;position: relative !important;">
-      <div style="height:28px;background-color:#522e91;">&nbsp;</div>
+      <div style="height:30px;background-color:#522e91;">&nbsp;</div>
       <div style="width:25%;float:left;padding-bottom:30px;">
         <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
       </div>
@@ -51,7 +51,7 @@
       </div>
       <div style="width:13%;float:left;">
         <h2>Preço fábrica</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R$ {{propostaAtual.medicamentoProposta.preco}}</h3>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.preco | currency}}</h3>
       </div>
       <div style="width:12%;float:left;">
         <h2>Desconto</h2>
@@ -60,11 +60,11 @@
       </div>
       <div style="width:13%;float:left;">
         <h2>Preço c/ desconto</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R$ {{propostaAtual.medicamentoProposta.precoDesconto}}</h3>        
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.precoDesconto | currency }}</h3>        
       </div>
       <div style="width:13%;float:left;">
         <h2>Rent. unitária</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R$ {{propostaAtual.medicamentoProposta.rentabilidadeUnitaria}}</h3>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.rentabilidadeUnitaria | currency }}</h3>
       </div>
       <div style="width:12%;float:left;">
         <h2>Consumo mês</h2>
@@ -72,7 +72,7 @@
       </div>
       <div style="width:13%;float:left;">
         <h2>Rent. Mensal</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">{{propostaAtual.medicamentoProposta.rentabilidadeMensal}}</h3>        
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.rentabilidadeMensal | currency}}</h3>        
       </div>
     </ion-card>
   </div>

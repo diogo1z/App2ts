@@ -19,6 +19,7 @@ import { PropostaAtualProvider } from '../providers/proposta-atual/proposta-atua
 import { EmailComposer } from '@ionic-native/email-composer';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -58,7 +59,8 @@ registerLocaleData(localePt, 'pt-BR');
     ClinicaProvider,
     PropostaProvider,
     PropostaMedicamentoProvider,
-    PropostaAtualProvider
+    PropostaAtualProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}

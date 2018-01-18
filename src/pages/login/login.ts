@@ -1,5 +1,7 @@
+import { UsuarioProvider } from './../../providers/usuario/usuario';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { PropostaAtual, PropostaAtualProvider } from '../../providers/proposta-atual/proposta-atual';
 
 
 @IonicPage()
@@ -10,7 +12,8 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 export class LoginPage {
   model : Login;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              private toast: ToastController) {
+              private toast: ToastController, private usuarioProvider:UsuarioProvider, 
+              private propostaAtualProvider: PropostaAtualProvider) {
     this.model = new Login();
   }
 
@@ -22,13 +25,24 @@ export class LoginPage {
   }
 
   private efetuarLogin(){
-    if ((this.model.email === "teste@teste.com" && this.model.senha === "123")
-        || this.model.email === "D"){
-      this.toast.create({ message: 'Login realizado com sucesso.', duration: 3000, position: 'botton' }).present();
-      this.navCtrl.push('InicioPage');
-    } else {
-      this.toast.create({ message: 'Login inválido.', duration: 3000, position: 'botton' }).present();
-    }
+    this.usuarioProvider.get(this.model.email, this.model.senha)
+      .then((result) => {
+        if (result != null)
+        {
+          var propostaAtual = new PropostaAtual();
+          propostaAtual.usuario = result;
+          this.propostaAtualProvider.update(propostaAtual);
+          console.log(propostaAtual);
+          this.toast.create({ message: 'Acesso realizado com sucesso.', duration: 3000, position: 'botton' }).present();
+          this.navCtrl.setRoot('InicioPage', {}, { animate: true, direction: 'forward' });
+
+        }
+        else 
+        {
+          this.toast.create({ message: 'E-mail/Senha inválidos.', duration: 3000, position: 'botton' }).present();
+        }
+      })
+      .catch((e) => console.error(e));   
   }
 }
 

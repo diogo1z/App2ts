@@ -91,6 +91,7 @@ export class SelecionarProdutoPage {
           this.propostaAtual.qtdCiclos = 1;
           this.propostaAtual.qtdPacientes = 1;
           this.propostaAtual.usoPorPaciente = 1;
+          this.propostaAtual.medicamentoProposta = null;
           this.propostaAtualProvider.update(this.propostaAtual);
           console.log(this.propostaAtual);
         }

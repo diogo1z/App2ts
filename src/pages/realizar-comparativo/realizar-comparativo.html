@@ -2,7 +2,7 @@
 
   <ion-navbar hideBackButton style="position: relative !important;">
     <ion-title style="padding: inherit !important;position: relative !important;">
-      <div style="height:25px;background-color:#522e91;">&nbsp;</div>
+      <div style="height:30px;background-color:#522e91;">&nbsp;</div>
       <div style="width:25%;float:left;padding-bottom:30px;">
         <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
       </div>
@@ -60,7 +60,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Preço fábrica</h2>
-          <h3 style="font-size: 24px;" class="especial-card-text-block">R$ {{propostaMedicamento.preco}}</h3>
+          <h3 style="font-size: 24px;" class="especial-card-text-block">R{{propostaMedicamento.preco | currency}}</h3>
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Desconto</h2>
@@ -70,7 +70,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Preço c/ desconto</h2>
-          <h3 style="font-size: 24px;" class="especial-card-text-block">R$ {{propostaMedicamento.precoDesconto}}</h3>
+          <h3 style="font-size: 24px;" class="especial-card-text-block">R{{propostaMedicamento.precoDesconto| currency}}</h3>
 
         </div>
         <div style="width:15%;float:left;">
@@ -80,7 +80,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18;">Repasse</h2>
-          <h3 style="font-size: 24px;" class="especial-card-text-block">R$ {{propostaMedicamento.repasse}}</h3>
+          <h3 style="font-size: 24px;" class="especial-card-text-block">R{{propostaMedicamento.repasse| currency}}</h3>
         </div>
       </ion-card>
       <ion-card class="normal-card" style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of propostaMedicamento.medicamentosLaboratorios">
@@ -91,7 +91,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Preço fábrica</h2>
-          <h3 style="font-size: 24px;" class="normal-card-text-block">R$ {{medicamento.preco}}</h3>
+          <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.preco| currency}}</h3>
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Desconto</h2>
@@ -101,7 +101,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Preço c/ desconto</h2>
-          <h3 style="font-size: 24px;" class="normal-card-text-block">R$ {{medicamento.precoDesconto}}</h3>
+          <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.precoDesconto| currency}}</h3>
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">% Repasse</h2>
@@ -110,7 +110,7 @@
         </div>
         <div style="width:15%;float:left;">
           <h2 style="font-size: 18px;">Repasse</h2>
-          <h3 style="font-size: 24px;" class="normal-card-text-block">R$ {{medicamento.repasse}}</h3>
+          <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.repasse| currency}}</h3>
         </div>
       </ion-card>
     </ion-list>
