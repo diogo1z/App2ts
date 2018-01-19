@@ -33,8 +33,9 @@ export class MyApp {
       .then((result: any[]) => {
         console.log('Fez a busca');
         console.log(result.length);
-        if (result.length < 100){
+        if (result.length < 400){
           //medicamentoProvider.carregarDadosIniciais();
+          clinicaProvider.clear();
           clinicaProvider.carregarDadosIniciais();
         }
         medicamentoProvider.carregarDadosIniciais();

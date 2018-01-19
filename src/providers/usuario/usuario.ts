@@ -76,11 +76,11 @@ export class UsuarioProvider {
     this.insert(usu15);
     var usu16 = new Usuario(); usu16.nome = 'Alexandre Silveira'; usu16.email = 'alexandre.silveira@drreedys.com'; usu16.matricula = '56352'; usu16.perfil = 'KAM';
     this.insert(usu16);
-    var usu17 = new Usuario(); usu17.nome = 'Bruno Ditura'; usu17.email = 'bruno.ditura@drreddys.com'; usu17.matricula = '29904'; usu17.perfil = 'GER';
+    var usu17 = new Usuario(); usu17.nome = 'Bruno Ditura'; usu17.email = 'bruno.ditura@drreddys.com'; usu17.matricula = '29904'; usu17.perfil = 'KAM';
     this.insert(usu17);
-    var usu18 = new Usuario(); usu18.nome = 'Camila Ribeiro'; usu18.email = 'camila.ribeiro@drreddys.com'; usu18.matricula = '54959'; usu18.perfil = 'GER';
+    var usu18 = new Usuario(); usu18.nome = 'Camila Ribeiro'; usu18.email = 'camila.ribeiro@drreddys.com'; usu18.matricula = '54959'; usu18.perfil = 'KAM';
     this.insert(usu18);
-    var usu19 = new Usuario(); usu19.nome = 'Daniele Luna'; usu19.email = 'daniele.luna@drreddys.com'; usu19.matricula = '54177'; usu19.perfil = 'ADM';
+    var usu19 = new Usuario(); usu19.nome = 'Daniele Luna'; usu19.email = 'daniele.luna@drreddys.com'; usu19.matricula = '54177'; usu19.perfil = 'GER';
     this.insert(usu19);
     var usu20 = new Usuario(); usu20.nome = 'Elpidio Moreira'; usu20.email = 'elpidio.moreira@drreddys.com'; usu20.matricula = '56711'; usu20.perfil = 'KAM';
     this.insert(usu20);
@@ -94,7 +94,7 @@ export class UsuarioProvider {
     this.insert(usu24);
     var usu25 = new Usuario(); usu25.nome = 'Michelle Pinheiro'; usu25.email = 'michelle.pinheiro@drreddys.com'; usu25.matricula = '56417'; usu25.perfil = 'KAM';
     this.insert(usu25);
-    var usu26 = new Usuario(); usu26.nome = 'Marcelo Moura'; usu26.email = 'marcelo.moura@drreddys.com'; usu26.matricula = '54178'; usu26.perfil = 'KAM';
+    var usu26 = new Usuario(); usu26.nome = 'Marcelo Moura'; usu26.email = 'marcelo.moura@drreddys.com'; usu26.matricula = '54178'; usu26.perfil = 'GER';
     this.insert(usu26);
     var usu27 = new Usuario(); usu27.nome = 'Marco Soto'; usu27.email = 'marco.soto@drreddys.com'; usu27.matricula = '54391'; usu27.perfil = 'KAM';
     this.insert(usu27);
