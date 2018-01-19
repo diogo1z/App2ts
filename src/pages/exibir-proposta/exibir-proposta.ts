@@ -143,5 +143,7 @@ export class ExibirPropostaPage {
     };
  
     this.emailComposer.open(email);
+
+    this.navCtrl.setRoot('PropostaEnviadaPage', {}, {animate: true, direction: 'forward'});    
   }
 }
