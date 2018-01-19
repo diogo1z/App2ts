@@ -23,7 +23,7 @@ export class MyApp {
       
 
       
-      statusBar.backgroundColorByHexString('#522e91');
+      //statusBar.backgroundColorByHexString('#522e91');
 
       splashScreen.hide();
       this.openHomePage(splashScreen);

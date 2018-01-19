@@ -84,13 +84,16 @@ $colors: (
 
 //@import "ionic.theme.default";
 .body{
-  padding: 35px,10,5px,10px !important; 
+  padding-left: 20px !important;
 }
 
-.body, h1,h2,h3,h4,h5, p {
+.body, h1,h2,h3,h5, p {
   color: color($colors, roxo) !important;
-  
 }
+.h4 {
+  color:white!important;
+}
+
 
 
 .especial-card{
@@ -142,93 +145,89 @@ $colors: (
   font-size: 35px !important;
 }
 
-.header {
-    display: inline-block !important;
-    height: 240px !important;
-    position: relative !important;
-    //background-color: #522e91 !important;
-    border-width: 0px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color:  white !important;
-    z-index:2 !important;
-    
+.barra-topo-roxo{
+  height: 224.5px!important;
+  background-image: url(../assets/icon/barra-cabecalho-roxo.png)!important;
+  background-size: 100% 224.5px !important;  
+  background-repeat: no-repeat !important;
+  padding-top: 40px !important;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
 }
 
-.toolbar-background , .toolbar-background-md{
-  background: linear-gradient(#522e91 70%,white 50%) !important;
-}
-.toolbar-title, .toolbar-title-md{  
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-}
-.toolbar-ios, .ion-title{
-    
-    padding: inherit !important;
-    position: relative !important;
-    /* width: 100%; */
-    /* height: 100%; */
-    /* -webkit-transform: translateZ(0); */
-    /* transform: translateZ(0); */
-    /* pointer-events: none; */
-}
-
-
-.toolbar-title, .toolbar-title-md, .title, .title-md > div > p {
-  color: white !important;// color($colors, white) !important;
-  z-index:2 !important;
-  text-align: center;
-}
-
-.title-md > div > hr{
-  display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid white;
-    margin: 1em 0;
-    padding: 0; 
-}
-
-.espaco-botoes-principais{
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-  z-index:2;
-}
-.espaco-botoes-principais-local-secundario{
-  display: inline-block;
-  height: 220px;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-  z-index:2;
-}
-
-.img-botao-topo-1, .img-botao-topo-2, .img-botao-topo-3{
-  border-radius: 50%;
-  border-radius: 100%;
-  border: 1px solid #e6dcdc;
-  z-index:1;
-  margin: -10px 0px 0px 0px;
-  height: 110px!important;
-}
-.img-botao-topo-3{
-  float: right;
+.barra-topo-branco{
+  height: 75.5px!important;
 }
 
 .img-logo-topo-drreddys{
   float: left;
-  height: 50px !important;
+  height: 52.1px !important;
+  width: 240px !important;
+}
+
+.img-logo-topo-sonred{  
+  height: 40px !important;
+  width: 176px !important;
 }
 
 .img-logo-topo-perfil{
   float: right;
-  height: 50px !important;
+  height: 52.1px !important;  
+}
+.linha-branca-topo{
+  width:100% !important;
+  color:white !important;
 }
 
+.img-botao-topo-1, .img-botao-topo-2, .img-botao-topo-3{
+  z-index:1;
+  margin: -54.5px 0px 0px 0px;
+  height: 109px!important;
+  width: 109px!important;
+}
+.flutuando{
+  float:left;
+}
+.img-botao-topo-3{
+  float: right;
+}
+.imagem-topo-branco-primeira, .imagem-topo-branco-segunda{
+  float: left;
+}
+
+.imagem-topo-branco-primeira{
+  padding-left: 20px;
+}
+.imagem-topo-branco-segunda{
+  padding-left: 21.4px;
+}
+
+.imagem-topo-branco-direita{
+  float: right;
+  padding-right: 20px;
+}
+.div-linha-branca{
+  padding-top: 70px;
+  width: 100%;
+  border-bottom: white;
+  border-bottom-style: inset;
+  border-bottom-width: 2px;
+  text-align: center
+}
+
+.trinta{
+  width: 30%;
+}
+
+.quarenta{
+  width: 40%;
+}
 .umterco {
   width: 33%;
+}
+
+.alinhar-centro{
+  text-align: center;
 }
 
 
