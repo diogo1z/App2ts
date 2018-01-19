@@ -39,10 +39,34 @@ export class GraficoRentabilidadeAnualPage {
       },
       series: [{
         name: 'Mês',
-        data: this.mensais //[2000, 1500, 1200]        
+        data: this.mensais, //[2000, 1500, 1200]        
+        dataLabels: {          
+              enabled: true,
+              rotation: -90,
+              color: '#FFFFFF',
+              align: 'right',
+              format: 'Mensal R${point.y:.2f}', // one decimal
+              y: 10, // 10 pixels down from the top
+              style: {
+                  fontSize: '13px',
+                  fontFamily: 'Verdana, sans-serif'
+              }
+          }
       }, {
         name: 'Ano',
-        data: this.anuais//[300, 200, 100]
+        data: this.anuais,//[300, 200, 100]
+        dataLabels: {          
+              enabled: true,
+              rotation: -90,
+              color: '#FFFFFF',
+              align: 'right',
+              format: 'Anual R${point.y:.2f}', // one decimal
+              y: 10, // 10 pixels down from the top
+              style: {
+                  fontSize: '13px',
+                  fontFamily: 'Verdana, sans-serif'
+              }
+          }
       }]
     });
   }
@@ -82,10 +106,32 @@ export class GraficoRentabilidadeAnualPage {
           },
           series: [{
             name: 'Mês',
-            data: this.mensais //[2000, 1500, 1200]        
+            data: this.mensais, //[2000, 1500, 1200]        
+            dataLabels: {              
+                  enabled: true,
+                  rotation: -90,
+                  color: '#FFFFFF',
+                  align: 'right',
+                  format: 'Mensal R${point.y:.2f}', // one decimal
+                  y: 2  , // 10 pixels down from the top
+                  style: {
+                      fontSize: '11px'
+                  }
+              }
           }, {
             name: 'Ano',
-            data: this.anuais//[300, 200, 100]
+            data: this.anuais,//[300, 200, 100]
+            dataLabels: {              
+                  enabled: true,
+                  rotation: -90,
+                  color: '#FFFFFF',
+                  align: 'right',
+                  format: 'Anual R${point.y:.2f}', // one decimal
+                  y: 2, // 10 pixels down from the top
+                  style: {
+                      fontSize: '11px'
+                  }
+              }
           }]
         });
       })
