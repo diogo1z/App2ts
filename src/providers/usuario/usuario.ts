@@ -80,7 +80,7 @@ export class UsuarioProvider {
     this.insert(usu17);
     var usu18 = new Usuario(); usu18.nome = 'Camila Ribeiro'; usu18.email = 'camila.ribeiro@drreddys.com'; usu18.matricula = '54959'; usu18.perfil = 'KAM';
     this.insert(usu18);
-    var usu19 = new Usuario(); usu19.nome = 'Daniele Luna'; usu19.email = 'daniele.luna@drreddys.com'; usu19.matricula = '54177'; usu19.perfil = 'GER';
+    var usu19 = new Usuario(); usu19.nome = 'Daniele Luna'; usu19.email = 'daniele.cunha@drreddys.com'; usu19.matricula = '54177'; usu19.perfil = 'GER';
     this.insert(usu19);
     var usu20 = new Usuario(); usu20.nome = 'Elpidio Moreira'; usu20.email = 'elpidio.moreira@drreddys.com'; usu20.matricula = '56711'; usu20.perfil = 'KAM';
     this.insert(usu20);
@@ -110,6 +110,8 @@ export class UsuarioProvider {
     this.insert(usu32);
     var usu33 = new Usuario(); usu33.nome = 'Usuario de Teste G'; usu33.email = 'G'; usu33.matricula = '1'; usu33.perfil = 'GER';
     this.insert(usu33);
+    var usu34 = new Usuario(); usu34.nome = 'Amabile Araújo'; usu34.email = 'amabile.araujo@drreddys.com'; usu34.matricula = '56539'; usu34.perfil = 'ADM';
+    this.insert(usu34);
   }
 }
 
