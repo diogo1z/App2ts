@@ -1,5 +1,4 @@
 <ion-header>
-
   <div class="barra-topo-roxo">
     <div class="trinta flutuando">
       <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
@@ -14,8 +13,8 @@
     <div class="div-linha-branca">
     </div>
     <div class="alinhar-centro" style="color:white!important;">
-        <h4>{{nomeClinica}}</h4>
-      </div>
+      <h4>{{nomeClinica}}</h4>
+    </div>
   </div>
   <div class="barra-topo-branco">
     <div class="imagem-topo-branco-primeira">
@@ -27,103 +26,114 @@
     <div class="imagem-topo-branco-direita">
       <img src="../assets/icon/comparativo-icon-laranja.png" class="img-botao-topo-3">
     </div>
-    
+
   </div>
 </ion-header>
 
 <ion-content padding>
-  <div style="width:16%;float:left;">
-    <h1>Quantidade de pacientes</h1>
-  </div>
-  <div style="width:16%;float:left;">
-    <ion-input [(ngModel)]="proposta.qtdPacientes" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
-      type="number" name="qtdPacientes"></ion-input>
-  </div>
+  <div *ngFor="let proposta of propostaAtual.itens">
+      <ion-card class="purple-card" style="text-align: center;">
+    <div style="width:16%;float:left;">
+      <h1>Quantidade de pacientes</h1>
+    </div>
+    <div style="width:16%;float:left;">
+      <ion-input [(ngModel)]="proposta.qtdPacientes" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
+        type="number" name="qtdPacientes"></ion-input>
+    </div>
 
-  <div style="width:16%;float:left;">
-    <h1>Quantidade mensal por paciente</h1>
+    <div style="width:16%;float:left;">
+      <h1>Quantidade mensal por paciente</h1>
+    </div>
+    <div style="width:16%;float:left;">
+      <ion-input [(ngModel)]="proposta.usoPorPaciente" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
+        type="number" name="usoPorPaciente"></ion-input>
+    </div>
+
+    <div style="width:16%;float:left;">
+      <h1>Quantidade de ciclos</h1>
+    </div>
+    <div style="width:16%;float:left;">
+      <ion-input [(ngModel)]="proposta.qtdCiclos" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
+        type="number" name="qtdCiclos"></ion-input>
+    </div>
+  </ion-card>
+    <div style="float:none;">
+      <ion-list>
+        <ion-card class="especial-card" style="text-align: center;">
+          <div style="width:25%;float:left;">
+            &nbsp;&nbsp;
+            <br/>
+            <h1 class="especial-card-h1">{{ proposta.medicamentoProposta.nome }}</h1>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Preço fábrica
+              <!--<ion-select [(ngModel)]="proposta.medicamentoProposta.PFSelecionado" (ionChange)="onSelectPFChange($event, propostaMedicamento)">
+                <ion-option value="PF0">ICMS 0%</ion-option>
+                <ion-option value="PF12">ICMS 12%</ion-option>
+                <ion-option value="PF17">ICMS 17%</ion-option>
+                <ion-option value="PF175">ICMS 17,5%</ion-option>
+                <ion-option value="PF18">ICMS 18%</ion-option>
+                <ion-option value="PF20">ICMS 20%</ion-option>
+              </ion-select>-->
+            </h2>
+            <h3 style="font-size: 24px;" class="especial-card-text-block">R{{proposta.medicamentoProposta.preco | currency}}</h3>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Desconto</h2>
+            <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
+              type="number" name="desconto" (change)=calcularValorMedicamento(this.proposta.medicamentoProposta) [(ngModel)]="proposta.medicamentoProposta.desconto"></ion-input>
+
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Preço c/ desconto</h2>
+            <h3 style="font-size: 24px;" class="especial-card-text-block">R{{proposta.medicamentoProposta.precoDesconto| currency}}</h3>
+
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18;">% Repasse</h2>
+            <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
+              type="number" name="porcentagemRepasse" (change)=calcularRepasseMedicamento(this.proposta.medicamentoProposta) [(ngModel)]="proposta.medicamentoProposta.porcentagemRepasse"></ion-input>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18;">Repasse</h2>
+            <h3 style="font-size: 24px;" class="especial-card-text-block">R{{proposta.medicamentoProposta.repasse| currency}}</h3>
+          </div>
+        </ion-card>
+        <ion-card class="normal-card" style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of proposta.medicamentoProposta.medicamentosLaboratorios">
+          <div style="width:25%;float:left;">
+            &nbsp;&nbsp;
+            <br/>
+            <h1>{{ medicamento.nome }}</h1>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Preço fábrica</h2>
+            <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.preco| currency}}</h3>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Desconto</h2>
+            <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: gray;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
+              type="number" name="preco" (change)=calcularValorMedicamento(this.medicamento) [(ngModel)]="medicamento.desconto"></ion-input>
+
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Preço c/ desconto</h2>
+            <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.precoDesconto| currency}}</h3>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">% Repasse</h2>
+            <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: gray;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
+              type="number" name="porcentagemRepasse" (change)=calcularRepasseMedicamento(this.medicamento) [(ngModel)]="medicamento.porcentagemRepasse"></ion-input>
+          </div>
+          <div style="width:15%;float:left;">
+            <h2 style="font-size: 18px;">Repasse</h2>
+            <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.repasse| currency}}</h3>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+    <br/> &nbsp;&nbsp;
+    <br/> &nbsp;&nbsp;
   </div>
-  <div style="width:16%;float:left;">
-    <ion-input [(ngModel)]="proposta.usoPorPaciente" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
-      type="number" name="usoPorPaciente"></ion-input>
-  </div>
-
-  <div style="width:16%;float:left;">
-    <h1>Quantidade de ciclos</h1>
-  </div>
-  <div style="width:16%;float:left;">
-    <ion-input [(ngModel)]="proposta.qtdCiclos" class="textbox-redondo-e-branco" style="    padding: 5px 5px 0 30px;font-size:30px;color:gray;border-radius: 40px;background: transparent;border-width: 0.5px;border-color: gray;border-style: groove;margin-left:15%;width:70%;text-align:center;"
-      type="number" name="qtdCiclos"></ion-input>
-  </div>
-
-  <br/> &nbsp;&nbsp;
-  <br/>&nbsp;
-  <div style="float:none;padding-top:30px;">
-    <ion-list>
-      <ion-card class="especial-card" style="text-align: center;">
-        <div style="width:25%;float:left;">
-          &nbsp;&nbsp;
-          <br/>
-          <h1 class="especial-card-h1">{{ propostaMedicamento.nome }}</h1>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Preço fábrica</h2>
-          <h3 style="font-size: 24px;" class="especial-card-text-block">R{{propostaMedicamento.preco | currency}}</h3>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Desconto</h2>
-          <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
-            type="number" name="desconto" (change)=calcularValor() [(ngModel)]="propostaMedicamento.desconto"></ion-input>
-
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Preço c/ desconto</h2>
-          <h3 style="font-size: 24px;" class="especial-card-text-block">R{{propostaMedicamento.precoDesconto| currency}}</h3>
-
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18;">% Repasse</h2>
-          <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
-            type="number" name="porcentagemRepasse" (change)=calcularRepasse() [(ngModel)]="propostaMedicamento.porcentagemRepasse"></ion-input>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18;">Repasse</h2>
-          <h3 style="font-size: 24px;" class="especial-card-text-block">R{{propostaMedicamento.repasse| currency}}</h3>
-        </div>
-      </ion-card>
-      <ion-card class="normal-card" style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of propostaMedicamento.medicamentosLaboratorios">
-        <div style="width:25%;float:left;">
-          &nbsp;&nbsp;
-          <br/>
-          <h1>{{ medicamento.nome }}</h1>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Preço fábrica</h2>
-          <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.preco| currency}}</h3>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Desconto</h2>
-          <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: gray;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
-            type="number" name="preco" (change)=calcularValorMedicamento(this.medicamento) [(ngModel)]="medicamento.desconto"></ion-input>
-
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Preço c/ desconto</h2>
-          <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.precoDesconto| currency}}</h3>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">% Repasse</h2>
-          <ion-input class="textbox-redondo-e-branco" style="font-size: 23px;color: gray;border-radius: 5px;border-width: 0.5px;border-color: gray;border-style: groove;margin-left: 15%;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;"
-            type="number" name="porcentagemRepasse" (change)=calcularRepasseMedicamento(this.medicamento) [(ngModel)]="medicamento.porcentagemRepasse"></ion-input>
-        </div>
-        <div style="width:15%;float:left;">
-          <h2 style="font-size: 18px;">Repasse</h2>
-          <h3 style="font-size: 24px;" class="normal-card-text-block">R{{medicamento.repasse| currency}}</h3>
-        </div>
-      </ion-card>
-    </ion-list>
-  </div>
-
 </ion-content>
 
 <ion-footer style="height:10%;background-color:#522e91;">

@@ -13,9 +13,9 @@ export class PropostaEnviadaPage {
   }
 
   ionViewDidLoad() {
-    
+
   }
   irParaInicio() {
-    this.navCtrl.setRoot('InicioPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('InicioPage', {}, { animate: true, direction: 'forward' });
   }
 }

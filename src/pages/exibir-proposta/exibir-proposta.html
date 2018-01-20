@@ -1,28 +1,28 @@
 <ion-header>
 
-    <div class="barra-topo-roxo">
-      <div class="trinta flutuando">
-        <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
-      </div>
-      <div class="quarenta alinhar-centro flutuando">
-        <img src="../assets/icon/logo-sonred-branco-01.png" class="img-logo-topo-sonred" />
-  
-      </div>
-      <div class="trinta flutuando">
-        <img src="../assets/icon/perfil-icon-roxo-01.png" class="img-logo-topo-perfil" />
-      </div>
-      <div class="div-linha-branca">
-      </div>
-      <div class="alinhar-centro" style="color:white!important;">
-          <h4>PROPOSTA</h4>
-        </div>
+  <div class="barra-topo-roxo">
+    <div class="trinta flutuando">
+      <img src="../assets/imgs/logo-dr.reddys.png" class="img-logo-topo-drreddys" />
     </div>
-    <div class="barra-topo-branco">
-    </div>
-  </ion-header>
-<ion-content padding>
+    <div class="quarenta alinhar-centro flutuando">
+      <img src="../assets/icon/logo-sonred-branco-01.png" class="img-logo-topo-sonred" />
 
-  <div style="float:none;padding-top:10px;">
+    </div>
+    <div class="trinta flutuando">
+      <img src="../assets/icon/perfil-icon-roxo-01.png" class="img-logo-topo-perfil" />
+    </div>
+    <div class="div-linha-branca">
+    </div>
+    <div class="alinhar-centro" style="color:white!important;">
+      <h4>PROPOSTA</h4>
+    </div>
+  </div>
+  <div class="barra-topo-branco">
+  </div>
+</ion-header>
+
+<ion-content padding>
+  <div style="float:none;padding-top:10px;" *ngFor="let proposta of propostaAtual.itens">
     <ion-card class="purple-card" style="vertical-align: middle;">
       <div style="width:22%;float:left;text-align: center;border-right-style: solid;border-right-width: 1px;">
         &nbsp;
@@ -37,14 +37,14 @@
       <div style="width:76%;float:left;">
         &nbsp;
         <br/>
-        <h2>{{propostaAtual.clinica.clinica.endereco}}</h2>        
+        <h2>{{propostaAtual.clinica.clinica.endereco}}</h2>
       </div>
     </ion-card>
     <ion-card class="especial-card" style="text-align: center;">
       <div style="width:22%;float:left;border-right-style: solid;border-right-width: 1px;">
         &nbsp;
         <br/>
-        <h1 class="especial-card-h1">{{ propostaAtual.medicamentoProposta.nome }}</h1>
+        <h1 class="especial-card-h1">{{ proposta.medicamentoProposta.nome }}</h1>
         &nbsp;
         <br/>
       </div>
@@ -53,42 +53,41 @@
       </div>
       <div style="width:13%;float:left;">
         <h2>Preço fábrica</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.preco | currency}}</h3>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{proposta.medicamentoProposta.preco | currency}}</h3>
       </div>
       <div style="width:12%;float:left;">
         <h2>Desconto</h2>
         <h3 style="font-size: 22px;color:gray!important;border-radius: 5px;border-width: 0.5px;border-color: #f06624;border-style: groove;width: 70%;text-align: center;padding: 0 0 0 0;background-color: transparent;font-size: 24px;"
-        class="textbox-redondo-e-branco">{{propostaAtual.medicamentoProposta.desconto}} %</h3>        
+          class="textbox-redondo-e-branco">{{proposta.medicamentoProposta.desconto}} %</h3>
       </div>
       <div style="width:13%;float:left;">
         <h2>Preço c/ desconto</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.precoDesconto | currency }}</h3>        
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{proposta.medicamentoProposta.precoDesconto | currency }}</h3>
       </div>
       <div style="width:13%;float:left;">
         <h2>Rent. unitária</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.rentabilidadeUnitaria | currency }}</h3>
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{proposta.medicamentoProposta.rentabilidadeUnitaria | currency }}</h3>
       </div>
       <div style="width:12%;float:left;">
         <h2>Consumo mês</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">{{propostaAtual.qtdCiclos}}</h3>        
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">{{proposta.qtdCiclos}}</h3>
       </div>
       <div style="width:13%;float:left;">
         <h2>Rent. Mensal</h2>
-        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{propostaAtual.medicamentoProposta.rentabilidadeMensal | currency}}</h3>        
+        <h3 style="font-size: 24px;color:gray!important;" class="especial-card-text-block">R{{proposta.medicamentoProposta.rentabilidadeMensal | currency}}</h3>
       </div>
     </ion-card>
   </div>
 </ion-content>
 <ion-footer style="height:10%;background-color:#522e91;">
-    <div (click)="irGraf()" style="border-right-style: outset;border-right-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
-        VOLTAR
-      </div>
+  <div (click)="irGraf()" style="border-right-style: outset;border-right-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
+    VOLTAR
+  </div>
   <div style="width:40%;float:left;">&nbsp;</div>
   <div style="border-left-style: outset;border-left-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
-      <img style="height:35px;" src="../assets/icon/proposta-icon-branco-01.png"/>&nbsp;&nbsp;Contrato
-    </div>
+    <img style="height:35px;" src="../assets/icon/proposta-icon-branco-01.png" />&nbsp;&nbsp;Contrato
+  </div>
   <div style="border-left-style: outset;border-left-width: 5px;padding-top:20px;color: white;font-size: 27px;text-align: center;width:20%;float:left;">
     <img src="../assets/icon/email-icon-2-branco.png" (click)="sendEmail()" style="height:33px" />&nbsp;&nbsp;E-mail
   </div>
 </ion-footer>
-

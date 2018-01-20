@@ -32,7 +32,7 @@
   <ion-list style="width:40%;">
     <ion-card *ngFor="let medicamentos of medicamentosList">
       <h1>
-        <ion-checkbox class="checkbox-royal" [(ngModel)]="medicamentos.medicamento.selecionado" (ionChange)="checkMedicamento(medicamentos.medicamento.nome,medicamentos.medicamento.selecionado)"></ion-checkbox>
+        <ion-checkbox class="checkbox-royal" [(ngModel)]="medicamentos.medicamento.selecionado" (ionChange)="checkMedicamento(medicamentos.medicamento)"></ion-checkbox>
         {{ medicamentos.medicamento.nome }}</h1>
       <h5 *ngFor="let medicamento of medicamentos.medicamento.laboratoriosMedicamento" style="padding-left: 22px;">{{medicamento.nome}}</h5>
     </ion-card>

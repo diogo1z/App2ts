@@ -32,7 +32,7 @@
   </ion-header>
 
 <ion-content padding>
-  <div style="float:none;padding-top:10px;">
+  <div style="float:none;padding-top:10px;" *ngFor="let proposta of propostaAtual.itens">
     <ion-card class="div-header" style="vertical-align: middle;text-align: center;">
       <div class="div-rentabilidade-header" style="width:20%;float:left;height:100%;">
         <h2 style="font-size: 23px;color: white !important;">&nbsp;
@@ -72,38 +72,38 @@
         <div style="width:20%;float:left;">
           &nbsp;&nbsp;
           <br/>
-          <h1 class="especial-card-h1">{{ propostaAtual.medicamentoProposta.nome }}</h1>
+          <h1 class="especial-card-h1">{{ proposta.medicamentoProposta.nome }}</h1>
         </div>
         <div class="especial-div-rentabilidade-down" style="width:18%;float:left;">
           <h2 style="font-size: 23px;">&nbsp;&nbsp;
-            <br/>R{{propostaAtual.medicamentoProposta.rentabilidadeUnitaria | currency}}</h2>
+            <br/>R{{proposta.medicamentoProposta.rentabilidadeUnitaria | currency}}</h2>
         </div>
         <div style="width:2%;float:left;">
           &nbsp;&nbsp;
         </div>
         <div class="especial-div-rentabilidade-down" style="width:18%;float:left;">
           <h2 style="font-size: 23px;">&nbsp;&nbsp;
-            <br/>R{{propostaAtual.medicamentoProposta.rentabilidadePorPaciente | currency}}</h2>
+            <br/>R{{proposta.medicamentoProposta.rentabilidadePorPaciente | currency}}</h2>
         </div>
         <div style="width:2%;float:left;">
           &nbsp;&nbsp;
         </div>
         <div class="div-rentabilidade-full-especial" style="width:18%;float:left;">
           <h2 style="color: white!important;font-size: 23px;">&nbsp;&nbsp;
-            <br/>R{{propostaAtual.medicamentoProposta.rentabilidadeMensal | currency}}</h2>
+            <br/>R{{proposta.medicamentoProposta.rentabilidadeMensal | currency}}</h2>
         </div>
         <div style="width:2%;float:left;">
           &nbsp;&nbsp;
         </div>
         <div class="div-rentabilidade-full-especial" style="width:18%;float:left;">
           <h2 style="color: white!important;font-size: 23px;">&nbsp;&nbsp;
-            <br/>R{{propostaAtual.medicamentoProposta.rentabilidadeAnual | currency}}</h2>
+            <br/>R{{proposta.medicamentoProposta.rentabilidadeAnual | currency}}</h2>
         </div>
         <div style="width:2%;float:left;">
           &nbsp;&nbsp;
         </div>
       </ion-card>
-      <ion-card class="normal-card" style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of propostaAtual.medicamentoProposta.medicamentosLaboratorios">
+      <ion-card class="normal-card" style="vertical-align: middle;text-align: center;" *ngFor="let medicamento of proposta.medicamentoProposta.medicamentosLaboratorios">
         <div style="width:20%;float:left;">
           &nbsp;&nbsp;
           <br/>

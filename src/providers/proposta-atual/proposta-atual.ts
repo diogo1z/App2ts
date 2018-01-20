@@ -42,6 +42,10 @@ export class PropostaAtualProvider {
 export class PropostaAtual {
   clinica : ClinicaList;
   usuario : Usuario;
+  itens : ItemProposta[];
+}
+
+export class ItemProposta{
   qtdCiclos : number;
   qtdPacientes : number;
   usoPorPaciente : number;

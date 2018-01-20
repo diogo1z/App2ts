@@ -1,4 +1,4 @@
-import { PropostaAtualProvider, PropostaAtual } from './../../providers/proposta-atual/proposta-atual';
+import { PropostaAtualProvider, PropostaAtual, ItemProposta } from './../../providers/proposta-atual/proposta-atual';
 import { MedicamentoProvider, Medicamento, MedicamentoList } from './../../providers/medicamento/medicamento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
@@ -14,10 +14,9 @@ export class SelecionarProdutoPage {
   propostaAtual: PropostaAtual;
   nomeClinica: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
-    private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider) 
-    { 
-      
-    }
+    private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider) {
+
+  }
 
   ionViewDidLoad() {
     this.getAllMedicamentos();
@@ -29,6 +28,7 @@ export class SelecionarProdutoPage {
       .then((result) => {
         this.propostaAtual = result;
         this.nomeClinica = result.clinica.clinica.nome;
+        this.propostaAtual.itens = [];
         console.log(this.propostaAtual);
       })
       .catch((e) => console.error(e));
@@ -58,8 +58,8 @@ export class SelecionarProdutoPage {
 
   realizarComparativo() {
     this.navCtrl.setRoot('RealizarComparativoPage', {}, { animate: true, direction: 'forward' });
-
   }
+
   selecionarProduto() {
     this.navCtrl.setRoot('SelecionarProdutoPage', {}, { animate: true, direction: 'forward' });
   }
@@ -72,30 +72,37 @@ export class SelecionarProdutoPage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
-  checkMedicamento(nome, status) {
-    console.log(nome, status);
-    if (status) {
-      this.medicamentosList.forEach(x => {
-        if (x.medicamento.nome !== nome) {
-          x.medicamento.selecionado = false;
+  checkMedicamento(med) {
+    console.log( med);
+    if (med.selecionado) {
+      console.log("gravando", med);
+      console.log(this.propostaAtual);
+
+      if (this.propostaAtual == null)
+        this.propostaAtual = new PropostaAtual();
+
+      if (this.propostaAtual.itens == null)
+        this.propostaAtual.itens = [];
+
+      var item = new ItemProposta();
+      item.qtdCiclos = 1;
+      item.qtdPacientes = 1;
+      item.usoPorPaciente = 1;
+      item.medicamento = med;
+      item.medicamentoProposta = null;
+
+      this.propostaAtual.itens.push(item);
+      this.propostaAtualProvider.update(this.propostaAtual);
+
+      console.log(this.propostaAtual);
+    }
+    else {
+      for (var i = this.propostaAtual.itens.length - 1; i >= 0; i--) {
+        if (this.propostaAtual.itens[i].medicamento.nome == med.nome) {
+          this.propostaAtual.itens.splice(i, 1);
+          break;
         }
-        else {
-          console.log("gravando", nome, status, x.medicamento.nome);
-          console.log(this.propostaAtual);
-          if (this.propostaAtual == null)
-            this.propostaAtual = new PropostaAtual();
-            
-          if (this.propostaAtual.medicamento == null)
-            this.propostaAtual.medicamento = new Medicamento();
-          this.propostaAtual.medicamento = x.medicamento;
-          this.propostaAtual.qtdCiclos = 1;
-          this.propostaAtual.qtdPacientes = 1;
-          this.propostaAtual.usoPorPaciente = 1;
-          this.propostaAtual.medicamentoProposta = null;
-          this.propostaAtualProvider.update(this.propostaAtual);
-          console.log(this.propostaAtual);
-        }
-      });
+      }
     }
   }
 }

@@ -16,8 +16,7 @@ export class ExibirRentabilidadePage {
     public navParams: NavParams,
     private propostaAtualProvider: PropostaAtualProvider) {
     this.propostaAtual = new PropostaAtual();
-    this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
-    this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
+    this.propostaAtual.itens = [];
   }
 
   ionViewDidLoad() {
@@ -31,22 +30,12 @@ export class ExibirRentabilidadePage {
         if (this.propostaAtual == null)
         {
           this.propostaAtual = new PropostaAtual();
-          this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
-          this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
+          this.propostaAtual.itens = [];
         }
         else 
         {
-          if (this.propostaAtual.medicamentoProposta == null)
-          {
-            this.propostaAtual.medicamentoProposta = new PropostaMedicamento();
-            this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
-          }
-          else {
-            if (this.propostaAtual.medicamentoProposta.medicamentosLaboratorios == null)
-            {
-              this.propostaAtual.medicamentoProposta.medicamentosLaboratorios = [];
-            }
-          }
+          if (this.propostaAtual.itens == null)
+            this.propostaAtual.itens = [];
         }
         
         console.log(this.propostaAtual);

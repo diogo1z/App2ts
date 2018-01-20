@@ -12,13 +12,10 @@ import { PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
   templateUrl: 'realizar-comparativo.html',
 })
 export class RealizarComparativoPage {
-  proposta: PropostaAtual;
-  propostaMedicamento: PropostaMedicamento;
+  propostaAtual: PropostaAtual;
   nomeClinica;
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePipe: DatePipe, private propostaAtualProvider: PropostaAtualProvider) {
-    this.propostaMedicamento = new PropostaMedicamento();
-    this.proposta = new PropostaAtual();
-    this.propostaMedicamento.medicamentosLaboratorios = [];
+    this.propostaAtual = new PropostaAtual();
   }
 
   ionViewDidLoad() {
@@ -26,81 +23,83 @@ export class RealizarComparativoPage {
   }
 
   getProposta() {
-    console.log("oi");
     this.propostaAtualProvider.get()
       .then((result) => {
-        this.nomeClinica = result.clinica.clinica.nome;
-        this.proposta = result;
-        if (this.proposta.qtdCiclos < 1) {
-          this.proposta.qtdCiclos = 1;
-          this.proposta.qtdPacientes = 1;
-          this.proposta.usoPorPaciente = 1;
-        }
-        console.log(this.proposta);
+        if (result.clinica == null)
+          this.nomeClinica = "Nenhuma clínica selecionada."
+        else
+          this.nomeClinica = result.clinica.clinica.nome;
+
+        this.propostaAtual = result;
         this.deParaMedicamentosEMedicamentosProposta();
-        console.log("xau");
+
       })
       .catch((e) => console.error(e));
     ;
   }
 
   deParaMedicamentosEMedicamentosProposta() {
-    if (this.proposta != null)
-      if (this.proposta.medicamento != null) {
+    if (this.propostaAtual != null)
+      if (this.propostaAtual.itens != null) {
         console.log("if");
-        console.log(this.proposta.medicamento);
+        console.log(this.propostaAtual.itens);
+        Array.prototype.sort.call(this.propostaAtual.itens, function (a, b) {
+          if (a.medicamento.nome > b.medicamento.nome) {
+            return 1;
+          }
+          if (a.medicamento.nome < b.medicamento.nome) {
+            return -1;
+          }
+          return 0;
+        });
 
-        if (this.proposta.medicamentoProposta == null) {
+        this.propostaAtual.itens.forEach(x => {
+          if (x.medicamentoProposta == null) {
+            x.medicamentoProposta = new PropostaMedicamento();
+            console.log(x.medicamentoProposta.nome);
 
+            x.medicamentoProposta.nome = x.medicamento.nome;
+            x.medicamentoProposta.preco = parseFloat(x.medicamento.PF0.toFixed(2));
+            x.medicamentoProposta.precoDesconto = parseFloat(x.medicamento.PF0.toFixed(2));
+            x.medicamentoProposta.repasse = parseFloat(x.medicamento.PF0.toFixed(2));
+            x.medicamentoProposta.PF0 = parseFloat(x.medicamento.PF0.toFixed(2));
+            x.medicamentoProposta.PF12 = parseFloat(x.medicamento.PF12.toFixed(2));
+            x.medicamentoProposta.PF17 = parseFloat(x.medicamento.PF17.toFixed(2));
+            x.medicamentoProposta.PF175 = parseFloat(x.medicamento.PF175.toFixed(2));
+            x.medicamentoProposta.PF18 = parseFloat(x.medicamento.PF18.toFixed(2));
+            x.medicamentoProposta.PF20 = parseFloat(x.medicamento.PF20.toFixed(2));
+            x.medicamentoProposta.maxDescontoADM = x.medicamento.maxDescontoADM;
+            x.medicamentoProposta.maxDescontoGER = x.medicamento.maxDescontoGER;
+            x.medicamentoProposta.maxDescontoKAM = x.medicamento.maxDescontoKAM;
+            x.medicamentoProposta.medicamentosLaboratorios = [];
+            x.qtdCiclos = 1;
+            x.qtdPacientes = 1;
+            x.usoPorPaciente = 1;
+            x.medicamentoProposta.PFSelecionado = "PF0";
 
-          this.propostaMedicamento = new PropostaMedicamento();
-          console.log(this.propostaMedicamento.nome);
-          this.propostaMedicamento.nome = this.proposta.medicamento.nome;
-          this.propostaMedicamento.preco = parseFloat(this.proposta.medicamento.PF0.toFixed(2));
-          this.propostaMedicamento.precoDesconto = parseFloat(this.proposta.medicamento.PF0.toFixed(2));
-          this.propostaMedicamento.repasse = parseFloat(this.proposta.medicamento.PF0.toFixed(2));
-          //this.propostaMedicamento.PF0 = this.proposta.medicamento.PF0.toFixed(2);
-          //this.propostaMedicamento.PF12 = this.proposta.medicamento.PF12.toFixed(2);
-          //this.propostaMedicamento.PF17 = this.proposta.medicamento.PF17.toFixed(2);
-          //this.propostaMedicamento.PF17ALC = this.proposta.medicamento.PF17ALC.toFixed(2);
-          //this.propostaMedicamento.PF175 = this.proposta.medicamento.PF175.toFixed(2);
-          //this.propostaMedicamento.PF175ALC = this.proposta.medicamento.PF175ALC.toFixed(2);
-          //this.propostaMedicamento.PF18 = this.proposta.medicamento.PF18.toFixed(2);
-          //this.propostaMedicamento.PF18ALC = this.proposta.medicamento.PF18ALC.toFixed(2);
-          //this.propostaMedicamento.PF20 = this.proposta.medicamento.PF20.toFixed(2);
-          this.propostaMedicamento.porcentagemRepasse = 0;
-          this.propostaMedicamento.desconto = 0;
-          this.propostaMedicamento.maxDescontoADM = this.proposta.medicamento.maxDescontoADM;
-          this.propostaMedicamento.maxDescontoGER = this.proposta.medicamento.maxDescontoGER;
-          this.propostaMedicamento.maxDescontoKAM = this.proposta.medicamento.maxDescontoKAM;
-          this.propostaMedicamento.medicamentosLaboratorios = [];
-          if (this.proposta.medicamento.laboratoriosMedicamento != null)
-            this.proposta.medicamento.laboratoriosMedicamento.forEach(x => {
-              var novaPropMed = new PropostaMedicamento();
-              novaPropMed.nome = x.nome;
-              novaPropMed.preco = parseFloat(x.PF0.toFixed(2));
-              novaPropMed.precoDesconto = parseFloat(x.PF0.toFixed(2));
-              novaPropMed.repasse = parseFloat((x.PF0.toFixed(2)));
-              //novaPropMed.PF0 = x.PF0.toFixed(2);
-              //novaPropMed.PF12 = x.PF12.toFixed(2);
-              //novaPropMed.PF17 = x.PF17.toFixed(2);
-              //novaPropMed.PF17ALC = x.PF17ALC.toFixed(2);
-              //novaPropMed.PF175 = x.PF175.toFixed(2);
-              //novaPropMed.PF175ALC = x.PF175ALC.toFixed(2);
-              //novaPropMed.PF18 = x.PF18.toFixed(2);
-              //novaPropMed.PF18ALC = x.PF18ALC.toFixed(2);
-              //novaPropMed.PF20 = x.PF20.toFixed(2);
-              novaPropMed.porcentagemRepasse = 0;
-              novaPropMed.desconto = 0;
-              novaPropMed.maxDescontoADM = x.maxDescontoADM;
-              novaPropMed.maxDescontoGER = x.maxDescontoGER;
-              novaPropMed.maxDescontoKAM = x.maxDescontoKAM;
-              this.propostaMedicamento.medicamentosLaboratorios.push(novaPropMed);
-            });
-        }
-        else {
-          this.propostaMedicamento = this.proposta.medicamentoProposta;
-        }
+            if (x.medicamento.laboratoriosMedicamento != null)
+              x.medicamento.laboratoriosMedicamento.forEach(y => {
+                var novaPropMed = new PropostaMedicamento();
+                novaPropMed.nome = y.nome;
+                novaPropMed.preco = parseFloat(y.PF0.toFixed(2));
+                novaPropMed.precoDesconto = parseFloat(y.PF0.toFixed(2));
+                novaPropMed.repasse = parseFloat(y.PF0.toFixed(2));
+                novaPropMed.PF0 = parseFloat(y.PF0.toFixed(2));
+                novaPropMed.PF12 = parseFloat(y.PF12.toFixed(2));
+                novaPropMed.PF17 = parseFloat(y.PF17.toFixed(2));
+                novaPropMed.PF175 = parseFloat(y.PF175.toFixed(2));
+                novaPropMed.PF18 = parseFloat(y.PF18.toFixed(2));
+                novaPropMed.PF20 = parseFloat(y.PF20.toFixed(2));
+                novaPropMed.porcentagemRepasse = 0;
+                novaPropMed.desconto = 0;
+                novaPropMed.maxDescontoADM = y.maxDescontoADM;
+                novaPropMed.maxDescontoGER = y.maxDescontoGER;
+                novaPropMed.maxDescontoKAM = y.maxDescontoKAM;
+                novaPropMed.PFSelecionado = "PF0";
+                x.medicamentoProposta.medicamentosLaboratorios.push(novaPropMed);
+              });
+          }
+        });
       }
   }
 
@@ -120,55 +119,12 @@ export class RealizarComparativoPage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
-  calcularValor() {
-    if (this.propostaMedicamento.desconto > 100) {
-      this.propostaMedicamento.desconto = 100;
-    }
-    if (this.propostaMedicamento.desconto < 0) {
-      this.propostaMedicamento.desconto = 0;
-    }
-
-    console.log(this.proposta.usuario);
-    console.log(this.propostaMedicamento.maxDescontoADM);
-    if (this.proposta.usuario.perfil == "ADM")
-      if (this.propostaMedicamento.desconto > this.propostaMedicamento.maxDescontoADM)
-        this.propostaMedicamento.desconto = this.propostaMedicamento.maxDescontoADM;
-
-    if (this.proposta.usuario.perfil == "GER")
-      if (this.propostaMedicamento.desconto > this.propostaMedicamento.maxDescontoGER)
-        this.propostaMedicamento.desconto = this.propostaMedicamento.maxDescontoGER;
-
-    if (this.proposta.usuario.perfil == "KAM")
-      if (this.propostaMedicamento.desconto > this.propostaMedicamento.maxDescontoKAM)
-        this.propostaMedicamento.desconto = this.propostaMedicamento.maxDescontoKAM;
-
-    this.propostaMedicamento.precoDesconto = parseFloat(
-      (this.propostaMedicamento.preco -
-        (this.propostaMedicamento.preco * (0.01 * this.propostaMedicamento.desconto))).toFixed(2));
-  }
-
-  calcularRepasse() {
-    if (this.propostaMedicamento.porcentagemRepasse > 100) {
-      this.propostaMedicamento.porcentagemRepasse = 100;
-    }
-    if (this.propostaMedicamento.porcentagemRepasse < 0) {
-      this.propostaMedicamento.porcentagemRepasse = 0;
-    }
-
-    this.propostaMedicamento.repasse = parseFloat(
-      (this.propostaMedicamento.preco +
-        (this.propostaMedicamento.preco * (0.01 * this.propostaMedicamento.porcentagemRepasse))).toFixed(2));
-  }
-
-
   calcularRepasseMedicamento(obj) {
     if (obj.porcentagemRepasse > 100)
       obj.porcentagemRepasse = 100;
 
     if (obj.porcentagemRepasse < 0)
       obj.porcentagemRepasse = 0;
-
-
 
     obj.repasse = (obj.preco +
       (obj.preco * (0.01 * obj.porcentagemRepasse))).toFixed(2);
@@ -181,15 +137,15 @@ export class RealizarComparativoPage {
     if (obj.desconto < 0)
       obj.desconto = 0;
 
-    if (this.proposta.usuario.perfil == "ADM")
+    if (this.propostaAtual.usuario.perfil == "ADM")
       if (obj.desconto > obj.maxDescontoADM)
         obj.desconto = obj.maxDescontoADM;
 
-    if (this.proposta.usuario.perfil == "GER")
+    if (this.propostaAtual.usuario.perfil == "GER")
       if (obj.desconto > obj.maxDescontoGER)
         obj.desconto = obj.maxDescontoGER;
 
-    if (this.proposta.usuario.perfil == "KAM")
+    if (this.propostaAtual.usuario.perfil == "KAM")
       if (obj.desconto > obj.maxDescontoKAM)
         obj.desconto = obj.maxDescontoKAM;
 
@@ -200,35 +156,65 @@ export class RealizarComparativoPage {
 
   irParaRentabilidade() {
 
-    this.propostaMedicamento.rentabilidadeUnitaria = parseFloat((this.propostaMedicamento.repasse - this.propostaMedicamento.precoDesconto).toFixed(2));
+    this.propostaAtual.itens.forEach(x => {
 
-    this.propostaMedicamento.rentabilidadePorPaciente = parseFloat(
-      (this.proposta.usoPorPaciente * this.propostaMedicamento.rentabilidadeUnitaria).toFixed(2));
+      x.medicamentoProposta.rentabilidadeUnitaria = parseFloat((x.medicamentoProposta.repasse - x.medicamentoProposta.precoDesconto).toFixed(2));
 
-    this.propostaMedicamento.rentabilidadeMensal = parseFloat(
-      (this.propostaMedicamento.rentabilidadePorPaciente * this.proposta.qtdPacientes).toFixed(2));
+      x.medicamentoProposta.rentabilidadePorPaciente = parseFloat(
+        (x.usoPorPaciente * x.medicamentoProposta.rentabilidadeUnitaria).toFixed(2));
 
-    this.propostaMedicamento.rentabilidadeAnual = parseFloat(
-      (this.propostaMedicamento.rentabilidadeMensal * this.proposta.qtdCiclos).toFixed(2));
+      x.medicamentoProposta.rentabilidadeMensal = parseFloat(
+        (x.medicamentoProposta.rentabilidadePorPaciente * x.qtdPacientes).toFixed(2));
 
-    this.propostaMedicamento.medicamentosLaboratorios.forEach(x => {
-      x.rentabilidadeUnitaria = parseFloat((x.repasse - x.precoDesconto).toFixed(2));
+      x.medicamentoProposta.rentabilidadeAnual = parseFloat(
+        (x.medicamentoProposta.rentabilidadeMensal * x.qtdCiclos).toFixed(2));
 
-      x.rentabilidadePorPaciente = parseFloat(
-        (this.proposta.usoPorPaciente * x.rentabilidadeUnitaria).toFixed(2));
+      x.medicamentoProposta.medicamentosLaboratorios.forEach(y => {
+        y.rentabilidadeUnitaria = parseFloat((y.repasse - y.precoDesconto).toFixed(2));
 
-      x.rentabilidadeMensal = parseFloat((x.rentabilidadePorPaciente * this.proposta.qtdPacientes).toFixed(2));
+        y.rentabilidadePorPaciente = parseFloat(
+          (x.usoPorPaciente * y.rentabilidadeUnitaria).toFixed(2));
 
-      x.rentabilidadeAnual = parseFloat(
-        (x.rentabilidadeMensal * this.proposta.qtdCiclos).toFixed(2));
+        y.rentabilidadeMensal = parseFloat((y.rentabilidadePorPaciente * x.qtdPacientes).toFixed(2));
+
+        y.rentabilidadeAnual = parseFloat(
+          (y.rentabilidadeMensal * x.qtdCiclos).toFixed(2));
+      });
     });
 
-    this.proposta.medicamentoProposta = this.propostaMedicamento;
-
-    this.propostaAtualProvider.update(this.proposta);
+    this.propostaAtualProvider.update(this.propostaAtual);
 
     this.navCtrl.setRoot('ExibirRentabilidadePage', {}, { animate: true, direction: 'forward' });
   }
 
+  onSelectPFChange(selectedValue, obj) {
+    this.realizaAlteracaoDoPF(selectedValue, obj);
 
+    obj.medicamentosLaboratorios.forEach(x => {
+      this.realizaAlteracaoDoPF(selectedValue, x);
+    });
+  }
+
+  realizaAlteracaoDoPF(pf, medicamento) {
+    if (pf == "PF0")
+      medicamento.preco = medicamento.PF0;
+
+    if (pf == "PF12")
+      medicamento.preco = medicamento.PF12;
+
+    if (pf == "PF17")
+      medicamento.preco = medicamento.PF17;
+
+    if (pf == "PF175")
+      medicamento.preco = medicamento.PF175;
+
+    if (pf == "PF18")
+      medicamento.preco = medicamento.PF18;
+
+    if (pf == "PF20")
+      medicamento.preco = medicamento.PF20;
+
+    this.calcularValorMedicamento(medicamento);
+    this.calcularRepasseMedicamento(medicamento);
+  }
 }

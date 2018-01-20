@@ -59,15 +59,13 @@ export class PropostaMedicamento {
   PF0: number;
   PF12: number;
   PF17: number;
-  PF17ALC: number;
   PF175: number;
-  PF175ALC: number;
   PF18: number;
-  PF18ALC: number;
   PF20: number;
   maxDescontoKAM : number;
   maxDescontoGER : number;
   maxDescontoADM : number;
+  PFSelecionado : string;
 }
 
 export class PropostaMedicamentoList {
