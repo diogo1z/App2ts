@@ -22,7 +22,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div style="float:none;padding-top:10px;" *ngFor="let proposta of propostaAtual.itens">
+  <div style="float:none;padding-top:10px;">
     <ion-card class="purple-card" style="vertical-align: middle;">
       <div style="width:22%;float:left;text-align: center;border-right-style: solid;border-right-width: 1px;">
         &nbsp;
@@ -40,7 +40,7 @@
         <h2>{{propostaAtual.clinica.clinica.endereco}}</h2>
       </div>
     </ion-card>
-    <ion-card class="especial-card" style="text-align: center;">
+    <ion-card class="especial-card" style="text-align: center;"  *ngFor="let proposta of propostaAtual.itens">
       <div style="width:22%;float:left;border-right-style: solid;border-right-width: 1px;">
         &nbsp;
         <br/>

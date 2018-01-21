@@ -58,7 +58,7 @@ export class RealizarComparativoPage {
             x.medicamentoProposta = new PropostaMedicamento();
             console.log(x.medicamentoProposta.nome);
 
-            x.medicamentoProposta.nome = x.medicamento.nome;
+            x.medicamentoProposta.nome = x.medicamento.nome;            
             x.medicamentoProposta.preco = parseFloat(x.medicamento.PF0.toFixed(2));
             x.medicamentoProposta.precoDesconto = parseFloat(x.medicamento.PF0.toFixed(2));
             x.medicamentoProposta.repasse = parseFloat(x.medicamento.PF0.toFixed(2));
@@ -68,6 +68,8 @@ export class RealizarComparativoPage {
             x.medicamentoProposta.PF175 = parseFloat(x.medicamento.PF175.toFixed(2));
             x.medicamentoProposta.PF18 = parseFloat(x.medicamento.PF18.toFixed(2));
             x.medicamentoProposta.PF20 = parseFloat(x.medicamento.PF20.toFixed(2));
+            x.medicamentoProposta.desconto = 0;
+            x.medicamentoProposta.porcentagemRepasse = 0;
             x.medicamentoProposta.maxDescontoADM = x.medicamento.maxDescontoADM;
             x.medicamentoProposta.maxDescontoGER = x.medicamento.maxDescontoGER;
             x.medicamentoProposta.maxDescontoKAM = x.medicamento.maxDescontoKAM;
@@ -188,6 +190,7 @@ export class RealizarComparativoPage {
   }
 
   onSelectPFChange(selectedValue, obj) {
+    
     this.realizaAlteracaoDoPF(selectedValue, obj);
 
     obj.medicamentosLaboratorios.forEach(x => {
