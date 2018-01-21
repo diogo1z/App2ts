@@ -23,7 +23,7 @@ export class SelecionarProdutoPage {
   ionViewDidLoad() {
     this.getProposta();
     let loader = this.loading.create({
-      content: 'Carregando as clínicas...',
+      content: 'Carregando os produtos...',
     });
   
     loader.present().then(() => {
