@@ -31,16 +31,12 @@ export class MyApp {
       
       clinicaProvider.getAll()
       .then((result: any[]) => {
-        console.log('Fez a busca');
-        console.log(result.length);
-        if (result.length < 400){
-          //medicamentoProvider.carregarDadosIniciais();
+        if (result == null){
           clinicaProvider.clear();
           clinicaProvider.carregarDadosIniciais();
+          medicamentoProvider.carregarDadosIniciais();
+          usuarioProvider.carregarDadosIniciais();
         }
-        medicamentoProvider.carregarDadosIniciais();
-        usuarioProvider.carregarDadosIniciais();
-        
       })
       .catch((e) => console.error(e));;
     });

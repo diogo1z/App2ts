@@ -1,5 +1,5 @@
 import { Medicamento } from './../medicamento/medicamento';
-import { ClinicaList } from './../clinica/clinica';
+import { Clinica } from './../clinica/clinica';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
@@ -40,7 +40,7 @@ export class PropostaAtualProvider {
 }
  
 export class PropostaAtual {
-  clinica : ClinicaList;
+  clinica : Clinica;
   usuario : Usuario;
   itens : ItemProposta[];
 }

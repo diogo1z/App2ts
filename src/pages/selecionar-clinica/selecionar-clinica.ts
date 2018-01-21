@@ -2,6 +2,7 @@ import { PropostaAtual, PropostaAtualProvider } from './../../providers/proposta
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ClinicaProvider, ClinicaList, Clinica } from '../../providers/clinica/clinica';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -9,22 +10,30 @@ import { ClinicaProvider, ClinicaList, Clinica } from '../../providers/clinica/c
   templateUrl: 'selecionar-clinica.html',
 })
 export class SelecionarClinicaPage {
-  clinicas: ClinicaList[];
+  clinicas: Clinica[];
   textoBuscaClinica: string = null;
   propostaAtual: PropostaAtual;
   nomeClinica;
-  constructor(public navCtrl: NavController, private toast: ToastController, private clinicasProvider: ClinicaProvider, private propostaAtualProvider: PropostaAtualProvider) { }
+  constructor(public navCtrl: NavController, private toast: ToastController, 
+    private clinicasProvider: ClinicaProvider, private propostaAtualProvider: PropostaAtualProvider,
+    public loading: LoadingController) { }
 
   ionViewDidLoad() {
-    this.getAllClinicas();
-    this.getProposta();
+    this.getProposta();    
+    let loader = this.loading.create({
+      content: 'Carregando as clínicas...',
+    });
+  
+    loader.present().then(() => {
+      this.getAllClinicas();
+      loader.dismiss();
+    });
   }
 
   getAllClinicas() {
     this.clinicasProvider.getAll()
       .then((result) => {
-        this.clinicas = result;
-        console.log(this.clinicas);
+        this.clinicas = result;        
       })
       .catch((e) => console.error(e));
     ;
@@ -36,11 +45,9 @@ export class SelecionarClinicaPage {
         this.propostaAtual = result;
         if (result == null){
           this.propostaAtual = new PropostaAtual();
-        }
-        console.log(this.propostaAtual);
+        }        
       })
       .catch((e) => console.error(e));
-    ;
   }
 
   getAllClinicasPorNome() {
@@ -48,7 +55,7 @@ export class SelecionarClinicaPage {
       .then((result) => {
         this.clinicas = result;
       })
-      .catch((e) => console.error(e));;
+      .catch((e) => console.error(e));
   }
 
   filterClinicas(ev: any) {
@@ -77,12 +84,12 @@ export class SelecionarClinicaPage {
   checkClinica(nome, status) {
     if (status) {
       this.clinicas.forEach(x => {
-        if (x.clinica.nome !== nome) {
-          x.clinica.selecionado = false;
+        if (x.nome !== nome) {
+          x.selecionado = false;
         }
         else {
           this.propostaAtual.clinica = x;
-          this.nomeClinica = x.clinica.nome;
+          this.nomeClinica = x.nome;
           this.propostaAtualProvider.update(this.propostaAtual);
         }
       });

@@ -28,7 +28,7 @@ export class RealizarComparativoPage {
         if (result.clinica == null)
           this.nomeClinica = "Nenhuma clínica selecionada."
         else
-          this.nomeClinica = result.clinica.clinica.nome;
+          this.nomeClinica = result.clinica.nome;
 
         this.propostaAtual = result;
         this.deParaMedicamentosEMedicamentosProposta();
@@ -40,9 +40,7 @@ export class RealizarComparativoPage {
 
   deParaMedicamentosEMedicamentosProposta() {
     if (this.propostaAtual != null)
-      if (this.propostaAtual.itens != null) {
-        console.log("if");
-        console.log(this.propostaAtual.itens);
+      if (this.propostaAtual.itens != null) {        
         Array.prototype.sort.call(this.propostaAtual.itens, function (a, b) {
           if (a.medicamento.nome > b.medicamento.nome) {
             return 1;
@@ -56,8 +54,6 @@ export class RealizarComparativoPage {
         this.propostaAtual.itens.forEach(x => {
           if (x.medicamentoProposta == null) {
             x.medicamentoProposta = new PropostaMedicamento();
-            console.log(x.medicamentoProposta.nome);
-
             x.medicamentoProposta.nome = x.medicamento.nome;            
             x.medicamentoProposta.preco = parseFloat(x.medicamento.PF0.toFixed(2));
             x.medicamentoProposta.precoDesconto = parseFloat(x.medicamento.PF0.toFixed(2));

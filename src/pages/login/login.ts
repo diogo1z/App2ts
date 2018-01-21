@@ -31,8 +31,7 @@ export class LoginPage {
         {
           var propostaAtual = new PropostaAtual();
           propostaAtual.usuario = result;
-          this.propostaAtualProvider.update(propostaAtual);
-          console.log(propostaAtual);
+          this.propostaAtualProvider.update(propostaAtual);          
           this.toast.create({ message: 'Acesso realizado com sucesso.', duration: 3000, position: 'botton' }).present();
           this.navCtrl.setRoot('InicioPage', {}, { animate: true, direction: 'forward' });
 

@@ -25,7 +25,7 @@ export class ExibirRentabilidadePage {
   getProposta() {
     this.propostaAtualProvider.get()
       .then((result) => {
-        this.nomeClinica = result.clinica.clinica.nome;
+        this.nomeClinica = result.clinica.nome;
         this.propostaAtual = result;
         if (this.propostaAtual == null)
         {
@@ -37,8 +37,6 @@ export class ExibirRentabilidadePage {
           if (this.propostaAtual.itens == null)
             this.propostaAtual.itens = [];
         }
-        
-        console.log(this.propostaAtual);
       })
       .catch((e) => console.error(e));
     ;

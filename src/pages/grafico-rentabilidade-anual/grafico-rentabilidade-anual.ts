@@ -72,8 +72,7 @@ export class GraficoRentabilidadeAnualPage {
   getProposta() {
     this.propostaAtualProvider.get()
       .then((result) => {
-        console.log(result);
-        this.nomeClinica = result.clinica.clinica.nome;
+        this.nomeClinica = result.clinica.nome;
         result.itens.forEach(med => {
           this.nomes.push(med.medicamentoProposta.nome + " Margem anual R$" +
             Math.round(med.medicamentoProposta.rentabilidadeAnual));
@@ -85,9 +84,7 @@ export class GraficoRentabilidadeAnualPage {
             this.anuais.push(x.rentabilidadeAnual);
             this.mensais.push(x.rentabilidadeMensal);
           });
-        });
-        console.log(this.nomes);
-        console.log(this.myChart);
+        });        
         this.myChart = HighCharts.chart('container', {
           chart: {
             type: 'column'

@@ -14,12 +14,11 @@ export class ExibirPropostaPage {
   propostaAtual: PropostaAtual;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
     private propostaAtualProvider: PropostaAtualProvider, private emailComposer: EmailComposer) {
-    this.propostaAtual = new PropostaAtual();
-    this.propostaAtual.clinica = new ClinicaList();
-    this.propostaAtual.clinica.clinica = new Clinica();
-    this.propostaAtual.clinica.clinica.nome = "";
-    this.propostaAtual.clinica.clinica.email = "";
-    this.propostaAtual.clinica.clinica.endereco = "";
+    this.propostaAtual = new PropostaAtual();    
+    this.propostaAtual.clinica = new Clinica();
+    this.propostaAtual.clinica.nome = "";
+    this.propostaAtual.clinica.email = "";
+    this.propostaAtual.clinica.endereco = "";
     this.propostaAtual.itens = [];
   }
 
@@ -69,7 +68,7 @@ export class ExibirPropostaPage {
       '<p><strong>Prezados Senhores,</strong></p>' +
       '<p><strong>&nbsp;</strong></p>' +
       '<p>Com o objetivo de estabelecer uma parceria s&oacute;lida com o ' +
-      '<strong>' + this.propostaAtual.clinica.clinica.nome + ',</strong> refor&ccedil;amos a nossa garantia de supply sem nenhuma ruptura, o nosso interesse em apoi&aacute;-los em projetos de educa&ccedil;&atilde;o m&eacute;dica continuada, assim como oferecer acesso a medicamentos oncol&oacute;gicos a nossos pacientes. Desta forma segue proposta comercial.</p>' +
+      '<strong>' + this.propostaAtual.clinica.nome + ',</strong> refor&ccedil;amos a nossa garantia de supply sem nenhuma ruptura, o nosso interesse em apoi&aacute;-los em projetos de educa&ccedil;&atilde;o m&eacute;dica continuada, assim como oferecer acesso a medicamentos oncol&oacute;gicos a nossos pacientes. Desta forma segue proposta comercial.</p>' +
       '<p>&nbsp;</p>' +
       '<table width="600">' +
       '<tbody>' +

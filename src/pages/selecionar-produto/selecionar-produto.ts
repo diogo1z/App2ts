@@ -2,6 +2,7 @@ import { PropostaAtualProvider, PropostaAtual, ItemProposta } from './../../prov
 import { MedicamentoProvider, Medicamento, MedicamentoList } from './../../providers/medicamento/medicamento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,22 +15,35 @@ export class SelecionarProdutoPage {
   propostaAtual: PropostaAtual;
   nomeClinica: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
-    private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider) {
+    private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider,
+    public loading: LoadingController) {
 
   }
 
   ionViewDidLoad() {
-    this.getAllMedicamentos();
     this.getProposta();
+    let loader = this.loading.create({
+      content: 'Carregando as clínicas...',
+    });
+  
+    loader.present().then(() => {
+      this.getAllMedicamentos();
+      loader.dismiss();
+    });
+    
+    
   }
 
   getProposta() {
     this.propostaAtualProvider.get()
       .then((result) => {
         this.propostaAtual = result;
-        this.nomeClinica = result.clinica.clinica.nome;
-        this.propostaAtual.itens = [];
-        console.log(this.propostaAtual);
+        if (result.clinica == null)
+          this.nomeClinica = "";
+        else 
+          this.nomeClinica = result.clinica.nome;
+
+        this.propostaAtual.itens = [];        
       })
       .catch((e) => console.error(e));
     ;
@@ -72,12 +86,8 @@ export class SelecionarProdutoPage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
-  checkMedicamento(med) {
-    console.log( med);
+  checkMedicamento(med) {    
     if (med.selecionado) {
-      console.log("gravando", med);
-      console.log(this.propostaAtual);
-
       if (this.propostaAtual == null)
         this.propostaAtual = new PropostaAtual();
 
@@ -93,8 +103,6 @@ export class SelecionarProdutoPage {
 
       this.propostaAtual.itens.push(item);
       this.propostaAtualProvider.update(this.propostaAtual);
-
-      console.log(this.propostaAtual);
     }
     else {
       for (var i = this.propostaAtual.itens.length - 1; i >= 0; i--) {

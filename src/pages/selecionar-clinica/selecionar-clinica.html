@@ -34,8 +34,8 @@
   <ion-list style="width:40%;">
     <ion-card *ngFor="let clinica of clinicas">
       <h1>
-        <ion-checkbox class="checkbox-royal" [(ngModel)]="clinica.clinica.selecionado" (ionChange)="checkClinica(clinica.clinica.nome,clinica.clinica.selecionado)"></ion-checkbox> {{ clinica.clinica.nome }}</h1>
-      <h5 style="padding-left: 22px;">{{ clinica.clinica.endereco }}</h5>
+        <ion-checkbox class="checkbox-royal" [(ngModel)]="clinica.selecionado" (ionChange)="checkClinica(clinica.nome,clinica.selecionado)"></ion-checkbox> {{ clinica.nome }}</h1>
+      <h5 style="padding-left: 22px;">{{ clinica.endereco }}</h5>
     </ion-card>
     <hr/>
   </ion-list>
