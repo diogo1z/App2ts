@@ -83,7 +83,7 @@ export class MedicamentoProvider {
     //this.cleanAll();
 
     var medicamento95 = new Medicamento(); medicamento95.nome = "ABIRATERONA"; medicamento95.PF0 = 8479.21; medicamento95.PF12 = 9798.47; medicamento95.PF17 = 10477.99; medicamento95.PF175 = 10551.17; medicamento95.PF18 = 10625.39; medicamento95.PF20 = 10933.02; 
-    medicamento95.maxDescontoADM = 0; medicamento95.maxDescontoGER = 0;medicamento95.maxDescontoKAM = 0;
+    medicamento95.maxDescontoADM = 100; medicamento95.maxDescontoGER = 100;medicamento95.maxDescontoKAM = 100;
     var medicamento96 = new Medicamento(); medicamento96.nome = "ABIRATERONA - JANSSEN-CILAG FARMACÊUTICA LTDA"; medicamento96.PF0 = 8479.21; medicamento96.PF12 = 9798.47; medicamento96.PF17 = 10477.99; medicamento96.PF175 = 10551.17; medicamento96.PF18 = 10625.39; medicamento96.PF20 = 10933.02; 
     medicamento96.maxDescontoADM = 100; medicamento96.maxDescontoGER = 100;medicamento96.maxDescontoKAM = 100;
     medicamento95.laboratoriosMedicamento = []; 
