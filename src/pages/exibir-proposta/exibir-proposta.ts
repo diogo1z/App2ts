@@ -133,6 +133,7 @@ export class ExibirPropostaPage {
       '<p>&nbsp;</p>';
 
     let email = {
+      app: "VMware Boxer",
       to: '',
       cc: 'daniele.cunha@drreddys.com',
       attachments: [
