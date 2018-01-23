@@ -133,11 +133,9 @@ export class ExibirPropostaPage {
       '<p>&nbsp;</p>';
 
     let email = {
-      app: 'Boxer',
+      app: 'gmail',
       to: '',
-      cc: 'daniele.cunha@drreddys.com',
-      attachments: [
-      ],
+      cc: 'daniele.cunha@drreddys.com',      
       subject: 'Proposta Dr. Reddy’s ',
       body: conteudo,
       isHtml: false
