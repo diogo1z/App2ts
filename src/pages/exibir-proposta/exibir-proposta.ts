@@ -132,7 +132,8 @@ export class ExibirPropostaPage {
       '<p>Atenciosamente,</p>' +
       '<p>&nbsp;</p>';
 
-    let email = {      
+    let email = {
+      app: 'Boxer',
       to: '',
       cc: 'daniele.cunha@drreddys.com',
       attachments: [
@@ -142,7 +143,7 @@ export class ExibirPropostaPage {
       isHtml: true
     };
     this.emailComposer.addAlias('Boxer','');
-    this.emailComposer.open(email,{app: 'Boxer'});
+    this.emailComposer.open(email);
     this.navCtrl.setRoot('PropostaEnviadaPage', {}, { animate: true, direction: 'forward' });
   }
 }

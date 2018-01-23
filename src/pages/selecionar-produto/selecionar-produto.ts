@@ -86,31 +86,39 @@ export class SelecionarProdutoPage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
-  checkMedicamento(med) {    
-    if (med.selecionado) {
-      if (this.propostaAtual == null)
-        this.propostaAtual = new PropostaAtual();
-
-      if (this.propostaAtual.itens == null)
-        this.propostaAtual.itens = [];
-
-      var item = new ItemProposta();
-      item.qtdCiclos = 1;
-      item.qtdPacientes = 1;
-      item.usoPorPaciente = 1;
-      item.medicamento = med;
-      item.medicamentoProposta = null;
-
-      this.propostaAtual.itens.push(item);
-      this.propostaAtualProvider.update(this.propostaAtual);
-    }
-    else {
-      for (var i = this.propostaAtual.itens.length - 1; i >= 0; i--) {
-        if (this.propostaAtual.itens[i].medicamento.nome == med.nome) {
-          this.propostaAtual.itens.splice(i, 1);
-          break;
+  checkMedicamento(med) {
+    let loader = this.loading.create({
+      content: 'Gravando produto...',
+    });
+  
+    loader.present().then(() => {
+      if (med.selecionado) {
+        if (this.propostaAtual == null)
+          this.propostaAtual = new PropostaAtual();
+  
+        if (this.propostaAtual.itens == null)
+          this.propostaAtual.itens = [];
+  
+        var item = new ItemProposta();
+        item.qtdCiclos = 1;
+        item.qtdPacientes = 1;
+        item.usoPorPaciente = 1;
+        item.medicamento = med;
+        item.medicamentoProposta = null;
+  
+        this.propostaAtual.itens.push(item);
+        this.propostaAtualProvider.update(this.propostaAtual);
+      }
+      else {
+        for (var i = this.propostaAtual.itens.length - 1; i >= 0; i--) {
+          if (this.propostaAtual.itens[i].medicamento.nome == med.nome) {
+            this.propostaAtual.itens.splice(i, 1);
+            break;
+          }
         }
       }
-    }
+      loader.dismiss();
+    });    
+    
   }
 }

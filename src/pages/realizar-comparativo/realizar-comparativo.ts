@@ -5,6 +5,7 @@ import { Proposta } from './../../providers/proposta/proposta';
 import { Component, LOCALE_ID } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,12 +15,20 @@ import { PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
 export class RealizarComparativoPage {
   propostaAtual: PropostaAtual;
   nomeClinica;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private datePipe: DatePipe, private propostaAtualProvider: PropostaAtualProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private datePipe: DatePipe, 
+    private propostaAtualProvider: PropostaAtualProvider, public loading: LoadingController) {
     this.propostaAtual = new PropostaAtual();
   }
 
   ionViewDidLoad() {
-    this.getProposta();
+    let loader = this.loading.create({
+      content: 'Carregando comparativo...',
+    });
+  
+    loader.present().then(() => {
+      this.getProposta();
+      loader.dismiss();
+    });;
   }
 
   getProposta() {
