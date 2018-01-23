@@ -140,9 +140,8 @@ export class ExibirPropostaPage {
       ],
       subject: 'Proposta Dr. Reddy’s ',
       body: conteudo,
-      isHtml: true
-    };
-    this.emailComposer.addAlias('Boxer','diogo.smatias@gmail.com');
+      isHtml: false
+    };    
     this.emailComposer.open(email);
     this.navCtrl.setRoot('PropostaEnviadaPage', {}, { animate: true, direction: 'forward' });
   }
