@@ -82,17 +82,25 @@ export class SelecionarClinicaPage {
   }
 
   checkClinica(nome, status) {
-    if (status) {
-      this.clinicas.forEach(x => {
-        if (x.nome !== nome) {
-          x.selecionado = false;
-        }
-        else {
-          this.propostaAtual.clinica = x;
-          this.nomeClinica = x.nome;
-          this.propostaAtualProvider.update(this.propostaAtual);
-        }
-      });
-    }
+    let loader = this.loading.create({
+      content: 'Gravando a clínica...',
+    });
+    loader.present().then(() => {
+      if (status) {
+        this.clinicas.forEach(x => {
+          if (x.nome !== nome) {
+            x.selecionado = false;
+          }
+          else {
+            this.propostaAtual.clinica = x;
+            this.nomeClinica = x.nome;
+            this.propostaAtualProvider.update(this.propostaAtual);
+          }
+        });
+      }
+      loader.dismiss();
+    });
+
+    
   }
 }
