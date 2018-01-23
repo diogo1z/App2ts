@@ -142,7 +142,7 @@ export class ExibirPropostaPage {
       body: conteudo,
       isHtml: true
     };
-    this.emailComposer.addAlias('Boxer','');
+    this.emailComposer.addAlias('Boxer','diogo.smatias@gmail.com');
     this.emailComposer.open(email);
     this.navCtrl.setRoot('PropostaEnviadaPage', {}, { animate: true, direction: 'forward' });
   }
