@@ -29,9 +29,15 @@ export class MyApp {
       this.openHomePage(splashScreen);
 
       
-      clinicaProvider.getAll()
+      medicamentoProvider.getAll()
       .then((result: any[]) => {
         if (result == null){
+          clinicaProvider.clear();
+          clinicaProvider.carregarDadosIniciais();
+          medicamentoProvider.carregarDadosIniciais();
+          usuarioProvider.carregarDadosIniciais();
+        }
+        else if(result.length == 0){
           clinicaProvider.clear();
           clinicaProvider.carregarDadosIniciais();
           medicamentoProvider.carregarDadosIniciais();
@@ -45,6 +51,6 @@ export class MyApp {
   private openHomePage(splashScreen: SplashScreen){
     splashScreen.hide();
     this.rootPage = HomePage;
-  }
+  }es
 }
 
