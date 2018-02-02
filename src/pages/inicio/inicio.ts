@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the InicioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -21,21 +15,20 @@ export class InicioPage {
   ionViewDidLoad() {
   }
 
-
   realizarComparativo() {
-    this.navCtrl.setRoot('RealizarComparativoPage', {}, {animate: true, direction: 'forward'});
-    
+    this.navCtrl.setRoot('RealizarComparativoPage', {}, { animate: true, direction: 'forward' });
+
   }
   selecionarProduto() {
-    this.navCtrl.setRoot('SelecionarProdutoPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('SelecionarProdutoPage', {}, { animate: true, direction: 'forward' });
   }
 
   irGraf() {
-    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, {animate: true, direction: 'forward'});    
+    this.navCtrl.setRoot('GraficoRentabilidadeAnualPage', {}, { animate: true, direction: 'forward' });
   }
 
-  selecionarClinica(){
-    this.navCtrl.setRoot('SelecionarClinicaPage', {}, {animate: true, direction: 'forward'});    
+  selecionarClinica() {
+    this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
 }

@@ -1,60 +1,88 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
-import { DatePipe } from '@angular/common';
 
 @Injectable()
 export class PropostaProvider {
- 
-  constructor(private storage: Storage, private datepipe: DatePipe) { }
- 
+
+  constructor(private storage: Storage) { }
+
+
   public insert(proposta: Proposta) {
-    let key = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
+    let key = "P9R0ST4";
     return this.save(key, proposta);
   }
- 
-  public update(key: string, proposta: Proposta) {
-    return this.save(key, proposta);
-  }
- 
+
   private save(key: string, proposta: Proposta) {
-    return this.storage.set(key, proposta);
+    this.storage.get(key).then((data) => {
+      if (data != null) {
+        data.push(proposta);
+        this.storage.set(key, data);
+      }
+      else {
+        let array = [];
+        array.push(proposta);
+        this.storage.set(key, array);
+      }
+    });
   }
- 
+
   public remove(key: string) {
     return this.storage.remove(key);
   }
- 
-  public getAll() {
- 
-    let propostas: PropostaList[] = [];
- 
-    return this.storage.forEach((value: Proposta, key: string, iterationNumber: Number) => {
-      let proposta = new PropostaList();
-      proposta.key = key;
-      proposta.proposta = value;
-      propostas.push(proposta);
-    })
-      .then(() => {
-        return Promise.resolve(propostas);
+
+  public async getAllNaoEnviadas() {
+
+    let propostas: Proposta[] = [];
+
+    return await this.storage.get("P9R0ST4")
+      .then((value) => {
+        value.forEach(x => {
+          let proposta = new Proposta();
+          proposta = x;
+          if (!x.enviada && x.enviarProposta)
+            propostas.push(proposta);
+        });
+        return propostas;
       })
       .catch((error) => {
+        console.log(error);
         return Promise.reject(error);
       });
   }
+
+  public async getAll() {
+
+    let propostas: Proposta[] = [];
+
+    return await this.storage.get("P9R0ST4")
+      .then((value) => {
+        propostas = value;
+        return propostas;
+      })
+      .catch((error) => {
+        console.log(error);
+        return Promise.reject(error);
+      });
+  }
+
+  public clear() {
+    return this.storage.clear();
+  }
 }
- 
+
 export class Proposta {
-  id : number;
-  data : Date;
-  enviarProposta : boolean;
-  propostaEnviada : boolean;
-  qtdCiclos : number;
-  qtdPacientes : number;
-  usoPorPaciente : number;
+  id: number;
+  data: Date;
+  enviarProposta: boolean;
+  enviada: boolean;
+  mensagem: string;
+  email: string;
+  cc: string;
+  nomeFuncionario: string;
 }
- 
+
 export class PropostaList {
   key: string;
-  proposta: Proposta;
+  proposta: Proposta[];
 }

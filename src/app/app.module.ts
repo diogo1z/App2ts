@@ -1,3 +1,4 @@
+import { Network } from '@ionic-native/network';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -20,6 +21,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { HttpModule } from '@angular/http';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -30,6 +32,7 @@ registerLocaleData(localePt, 'pt-BR');
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {
       platforms : {
         ios : {
@@ -60,7 +63,8 @@ registerLocaleData(localePt, 'pt-BR');
     PropostaProvider,
     PropostaMedicamentoProvider,
     PropostaAtualProvider,
-    UsuarioProvider
+    UsuarioProvider,
+    Network
   ]
 })
 export class AppModule {}

@@ -1,9 +1,12 @@
+import { DatePipe } from '@angular/common';
 import { Clinica, ClinicaList } from './../../providers/clinica/clinica';
 import { PropostaMedicamento } from './../../providers/proposta-medicamento/proposta-medicamento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { Http, Headers } from '@angular/http';
+import { LoadingController } from 'ionic-angular';
+import { PropostaProvider, Proposta } from '../../providers/proposta/proposta';
 
 @IonicPage()
 @Component({
@@ -12,9 +15,11 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class ExibirPropostaPage {
   propostaAtual: PropostaAtual;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
-    private propostaAtualProvider: PropostaAtualProvider, private emailComposer: EmailComposer) {
-    this.propostaAtual = new PropostaAtual();    
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private propostaAtualProvider: PropostaAtualProvider, public http: Http,
+    public loading: LoadingController,
+    private propostaProvider: PropostaProvider) {
+    this.propostaAtual = new PropostaAtual();
     this.propostaAtual.clinica = new Clinica();
     this.propostaAtual.clinica.nome = "";
     this.propostaAtual.clinica.email = "";
@@ -59,8 +64,25 @@ export class ExibirPropostaPage {
   }
 
   sendEmail() {
+    let loader = this.loading.create({
+      content: 'Enviando proposta...',
+    });
+  
+    loader.present().then(() => {
+      this.enviarEmailEGravarProposta();
+      loader.dismiss();
+    });
+    
+    this.navCtrl.setRoot('PropostaEnviadaPage', {}, { animate: true, direction: 'forward' });
+  }
 
-    var conteudo = '<p>Dr. Reddy&rsquo;s Farmac&ecirc;utica do Brasil Ltda. Rua George Ohm, 206 - Conj. 103 e 104, Torre A, Edif&iacute;cio LWM, Brooklin Novo, CEP: 04576-020 - S&atilde;o Paulo/SP - Brasil</p>' +
+  private enviarEmailEGravarProposta(){
+    var conteudo = 
+    '<p>Esta é uma mensagem automática, por favor não responder</p>' +
+    '<p></p>' +
+    '<p>Proposta enviada por: ' + this.propostaAtual.usuario.nome + '</p>' +
+    '<p></p>' +
+    '<p>Dr. Reddy&rsquo;s Farmac&ecirc;utica do Brasil Ltda. Rua George Ohm, 206 - Conj. 103 e 104, Torre A, Edif&iacute;cio LWM, Brooklin Novo, CEP: 04576-020 - S&atilde;o Paulo/SP - Brasil</p>' +
       '<p>T: +55 11 5894 2343</p>' +
       '<p>F: +55 11 5891 7759</p>' +
       '<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></p>' +
@@ -132,14 +154,38 @@ export class ExibirPropostaPage {
       '<p>Atenciosamente,</p>' +
       '<p>&nbsp;</p>';
 
-    let email = {      
-      to: '',
-      cc: 'daniele.cunha@drreddys.com',      
-      subject: 'Proposta Dr. Reddy’s ',
-      body: conteudo,
-      isHtml: false
-    };    
-    this.emailComposer.open(email);
-    this.navCtrl.setRoot('PropostaEnviadaPage', {}, { animate: true, direction: 'forward' });
+    var link = 'http://www.drreddys.com.br/Email/api/Send';
+    var myData = JSON.stringify({
+      Destinatario: "diogo1z@hotmail.com",
+      CC: "daniele.cunha@drreddys.com",
+      Assunto: "Proposta Dr. Reddy’s",
+      Corpo: conteudo,
+      Assinatura: ""
+    });
+
+    var proposta = new Proposta();
+    proposta.cc ="daniele.cunha@drreddys.com";
+    proposta.data = new Date();
+    proposta.email = "clinica@clinica.com.br";
+    proposta.nomeFuncionario = this.propostaAtual.usuario.nome;
+    proposta.mensagem = conteudo;
+    proposta.id = 22;//(new Date(), "ddMMyyyyHHmmss")
+
+    var header = new Headers();
+    header.append('Content-Type', 'application/json;charset=utf-8');
+
+    console.log(myData);
+    this.http.post(link, myData, { headers: header })
+      .subscribe(data => {
+        proposta.enviada = true;
+        proposta.enviarProposta = false;
+        this.propostaProvider.insert(proposta);
+        console.log(proposta);
+      }, error => {
+        proposta.enviada = false;
+        proposta.enviarProposta = true;
+        this.propostaProvider.insert(proposta);
+        console.log(proposta);
+      });
   }
 }
