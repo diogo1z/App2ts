@@ -7,6 +7,7 @@ import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-a
 import { Http, Headers } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { PropostaProvider, Proposta } from '../../providers/proposta/proposta';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,8 +18,8 @@ export class ExibirPropostaPage {
   propostaAtual: PropostaAtual;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private propostaAtualProvider: PropostaAtualProvider, public http: Http,
-    public loading: LoadingController,
-    private propostaProvider: PropostaProvider) {
+    public loading: LoadingController,private datepipe: DatePipe,
+    private propostaProvider: PropostaProvider,private alertCtrl: AlertController) {
     this.propostaAtual = new PropostaAtual();
     this.propostaAtual.clinica = new Clinica();
     this.propostaAtual.clinica.nome = "";
@@ -63,20 +64,51 @@ export class ExibirPropostaPage {
     this.navCtrl.setRoot('SelecionarClinicaPage', {}, { animate: true, direction: 'forward' });
   }
 
-  sendEmail() {
+  solicitarEmail() {
+    console.log('alert');
+    let alert = this.alertCtrl.create({
+      title: 'Email',
+      message: 'Informe o e-mail da clínica',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'E-mail',
+          type:'Email'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'Cancelar',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Enviar',
+          handler: data => {
+            this.sendEmail(data.email);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  sendEmail(email) {
     let loader = this.loading.create({
       content: 'Enviando proposta...',
     });
   
     loader.present().then(() => {
-      this.enviarEmailEGravarProposta();
+      this.enviarEmailEGravarProposta(email);
       loader.dismiss();
     });
     
     this.navCtrl.setRoot('PropostaEnviadaPage', {}, { animate: true, direction: 'forward' });
   }
 
-  private enviarEmailEGravarProposta(){
+  private enviarEmailEGravarProposta(email){
     var conteudo = 
     '<p>Esta é uma mensagem automática, por favor não responder</p>' +
     '<p></p>' +
@@ -156,7 +188,7 @@ export class ExibirPropostaPage {
 
     var link = 'http://www.drreddys.com.br/Email/api/Send';
     var myData = JSON.stringify({
-      Destinatario: "diogo1z@hotmail.com",
+      Destinatario: email,
       CC: "daniele.cunha@drreddys.com",
       Assunto: "Proposta Dr. Reddy’s",
       Corpo: conteudo,
@@ -166,10 +198,10 @@ export class ExibirPropostaPage {
     var proposta = new Proposta();
     proposta.cc ="daniele.cunha@drreddys.com";
     proposta.data = new Date();
-    proposta.email = "clinica@clinica.com.br";
+    proposta.email = email;
     proposta.nomeFuncionario = this.propostaAtual.usuario.nome;
     proposta.mensagem = conteudo;
-    proposta.id = 22;//(new Date(), "ddMMyyyyHHmmss")
+    proposta.id = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
 
     var header = new Headers();
     header.append('Content-Type', 'application/json;charset=utf-8');

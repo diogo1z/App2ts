@@ -5,6 +5,7 @@
     <author email="diogo1z@hotmail.com" href="http://www.dmatias.tk/">Diogo Matias</author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

@@ -13,6 +13,22 @@ export class PropostaProvider {
     return this.save(key, proposta);
   }
 
+  public update(proposta: Proposta) {
+    let key = "P9R0ST4";
+    this.storage.get(key).then((data) => {
+      if (data != null) {
+        for (var i = data.length - 1; i >= 0; i--) {
+          if (data[i].id == proposta.id) {
+            data.splice(i, 1);
+            data.push(proposta);
+            break;
+          }
+        }
+        this.storage.set(key, data);
+      }
+    });
+  }
+
   private save(key: string, proposta: Proposta) {
     this.storage.get(key).then((data) => {
       if (data != null) {
@@ -35,14 +51,16 @@ export class PropostaProvider {
 
     let propostas: Proposta[] = [];
 
-    return await this.storage.get("P9R0ST4")
+    return this.storage.get("P9R0ST4")
       .then((value) => {
-        value.forEach(x => {
-          let proposta = new Proposta();
-          proposta = x;
-          if (!x.enviada && x.enviarProposta)
-            propostas.push(proposta);
-        });
+        if (value != null)
+          value.forEach(x => {
+            let proposta = new Proposta();
+            proposta = x;
+            if (!x.enviada && x.enviarProposta)
+              propostas.push(proposta);
+          });
+
         return propostas;
       })
       .catch((error) => {
@@ -52,9 +70,7 @@ export class PropostaProvider {
   }
 
   public async getAll() {
-
     let propostas: Proposta[] = [];
-
     return await this.storage.get("P9R0ST4")
       .then((value) => {
         propostas = value;
@@ -72,7 +88,7 @@ export class PropostaProvider {
 }
 
 export class Proposta {
-  id: number;
+  id: string;
   data: Date;
   enviarProposta: boolean;
   enviada: boolean;
