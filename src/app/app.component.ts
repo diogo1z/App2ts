@@ -22,11 +22,12 @@ export class MyApp {
     usuarioProvider: UsuarioProvider, public propostaProvider: PropostaProvider,
     loading: LoadingController, public http: Http) {
     platform.ready().then(() => {
+      splashScreen.hide();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
 
-      splashScreen.hide();
+      
       this.openHomePage(splashScreen);
       let loader = loading.create({
         content: 'Carregando...',
