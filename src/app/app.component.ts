@@ -14,17 +14,19 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      splashScreen.hide();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      this.openHomePage(splashScreen);
+      setTimeout(() => {
+        splashScreen.hide();
+      }, 100);
+
+      this.rootPage = HomePage;
     });
   }
 
   private openHomePage(splashScreen: SplashScreen) {
-    splashScreen.hide();
-    this.rootPage = HomePage;
+
   }
 }
 
