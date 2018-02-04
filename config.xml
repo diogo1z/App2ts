@@ -18,6 +18,13 @@
     <preference name="AutoHideSplashScreen" value="false"/>
     <preference name="SplashShowOnlyFirstTime" value="false"/>
     <preference name="FadeSplashScreen" value="false"/>
+
+    <feature name="CDVWKWebViewEngine">
+        <param name="ios-package" value="CDVWKWebViewEngine" />
+    </feature>  
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+
+
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -86,4 +93,5 @@
     <plugin name="cordova-plugin-disable-ios11-statusbar" spec="^1.0.0" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <engine name="ios" spec="~4.5.4" />
+    
 </widget>
