@@ -27,6 +27,7 @@
     "@ionic-native/status-bar": "^4.5.3",
     "@ionic/storage": "^2.1.3",
     "cordova-browser": "5.0.3",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-email-composer": "^0.8.13",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -59,7 +60,8 @@
       "cordova-plugin-network-information": {}
     },
     "platforms": [
-      "browser"
+      "browser",
+      "ios"
     ]
   }
 }

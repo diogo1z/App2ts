@@ -6,10 +6,10 @@ import { DatePipe } from '@angular/common';
 @Injectable()
 export class MedicamentoProvider {
 
-  constructor(private storage: Storage, private datepipe: DatePipe) { }
+  constructor(private storage: Storage) { }
 
   public insert(medicamento: Medicamento) {
-    let key = "M2E3D199" + medicamento.nome; // this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
+    let key = "M2E3D199" + medicamento.nome;
     return this.save(key, medicamento);
   }
 

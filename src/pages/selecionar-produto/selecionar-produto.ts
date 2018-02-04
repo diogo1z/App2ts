@@ -1,7 +1,7 @@
 import { PropostaAtualProvider, PropostaAtual, ItemProposta } from './../../providers/proposta-atual/proposta-atual';
-import { MedicamentoProvider, Medicamento, MedicamentoList } from './../../providers/medicamento/medicamento';
+import { MedicamentoProvider, MedicamentoList } from './../../providers/medicamento/medicamento';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
@@ -14,7 +14,7 @@ export class SelecionarProdutoPage {
   textoBuscaMedicamento: string = null;
   propostaAtual: PropostaAtual;
   nomeClinica: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController,
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     private medicamentoProvider: MedicamentoProvider, private propostaAtualProvider: PropostaAtualProvider,
     public loading: LoadingController) {
 
@@ -45,8 +45,7 @@ export class SelecionarProdutoPage {
 
         this.propostaAtual.itens = [];        
       })
-      .catch((e) => console.error(e));
-    ;
+      .catch((e) => console.error(e));    
   }
 
   getAllMedicamentos() {

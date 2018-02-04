@@ -1,4 +1,3 @@
-import { Medicamento } from './../medicamento/medicamento';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';

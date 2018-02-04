@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
-import { PropostaMedicamentoList, PropostaMedicamento } from '../proposta-medicamento/proposta-medicamento';
+import { PropostaMedicamento } from '../proposta-medicamento/proposta-medicamento';
 import { Usuario } from '../usuario/usuario';
 
 @Injectable()
 export class PropostaAtualProvider {
 
-  constructor(private storage: Storage, private datepipe: DatePipe) { }
+  constructor(private storage: Storage) { }
  
   public update(proposta: PropostaAtual) {
     return this.save('PROPOSTA_ATUAL', proposta);

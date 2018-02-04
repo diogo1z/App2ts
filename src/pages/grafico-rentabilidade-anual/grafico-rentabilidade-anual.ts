@@ -1,7 +1,7 @@
 import * as HighCharts from 'highcharts';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { PropostaAtual, PropostaAtualProvider } from '../../providers/proposta-atual/proposta-atual';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PropostaAtualProvider } from '../../providers/proposta-atual/proposta-atual';
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ export class GraficoRentabilidadeAnualPage {
   mensais = [];
   nomeClinica;
   myChart;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private propostaAtualProvider: PropostaAtualProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private propostaAtualProvider: PropostaAtualProvider) {
     this.getProposta();
   }
 

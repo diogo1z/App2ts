@@ -1,7 +1,7 @@
 import { PropostaAtual, PropostaAtualProvider } from './../../providers/proposta-atual/proposta-atual';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { ClinicaProvider, ClinicaList, Clinica } from '../../providers/clinica/clinica';
+import { IonicPage, NavController } from 'ionic-angular';
+import { ClinicaProvider,  Clinica } from '../../providers/clinica/clinica';
 import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
@@ -14,7 +14,7 @@ export class SelecionarClinicaPage {
   textoBuscaClinica: string = null;
   propostaAtual: PropostaAtual;
   nomeClinica;
-  constructor(public navCtrl: NavController, private toast: ToastController, 
+  constructor(public navCtrl: NavController, 
     private clinicasProvider: ClinicaProvider, private propostaAtualProvider: PropostaAtualProvider,
     public loading: LoadingController) { }
 

@@ -3,10 +3,10 @@ import { NavController, ToastController } from 'ionic-angular';
 import { ContactProvider, Contact, ContactList } from '../../providers/contact/contact';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { Http, Headers } from '@angular/http';
-import { PropostaProvider, Proposta } from '../../providers/proposta/proposta';
+import { PropostaProvider } from '../../providers/proposta/proposta';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
-import { MedicamentoProvider, Medicamento } from '../../providers/medicamento/medicamento';
-import { ClinicaProvider, Clinica } from '../../providers/clinica/clinica';
+import { MedicamentoProvider } from '../../providers/medicamento/medicamento';
+import { ClinicaProvider } from '../../providers/clinica/clinica';
 
 @Component({
   selector: 'page-home',
@@ -15,8 +15,8 @@ import { ClinicaProvider, Clinica } from '../../providers/clinica/clinica';
 export class HomePage {
   contacts: ContactList[];
 
-  constructor(public navCtrl: NavController, private contactProvider: ContactProvider,
-    private toast: ToastController, private medicamentoProvider: MedicamentoProvider, private clinicaProvider: ClinicaProvider,
+  constructor(public navCtrl: NavController, private toast: ToastController, 
+    private medicamentoProvider: MedicamentoProvider, private clinicaProvider: ClinicaProvider,
     private usuarioProvider: UsuarioProvider, public propostaProvider: PropostaProvider,
     private loading: LoadingController, public http: Http) { }
 
@@ -97,19 +97,5 @@ export class HomePage {
 
   irParaLogin() {
     this.navCtrl.push('LoginPage');
-  }
-
-  editContact(item: ContactList) {
-    this.navCtrl.push('EditContactPage', { key: item.key, contact: item.contact });
-  }
-
-  removeContact(item: ContactList) {
-    this.contactProvider.remove(item.key)
-      .then(() => {
-        // Removendo do array de items
-        var index = this.contacts.indexOf(item);
-        this.contacts.splice(index, 1);
-        this.toast.create({ message: 'Contato removido.', duration: 3000, position: 'botton' }).present();
-      })
   }
 }

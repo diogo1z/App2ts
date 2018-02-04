@@ -1,8 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { PropostaMedicamento } from './../../providers/proposta-medicamento/proposta-medicamento';
 import { PropostaAtualProvider } from './../../providers/proposta-atual/proposta-atual';
-import { Proposta } from './../../providers/proposta/proposta';
-import { Component, LOCALE_ID } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
 import { LoadingController } from 'ionic-angular';
@@ -15,7 +14,7 @@ import { LoadingController } from 'ionic-angular';
 export class RealizarComparativoPage {
   propostaAtual: PropostaAtual;
   nomeClinica;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private datePipe: DatePipe, 
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
     private propostaAtualProvider: PropostaAtualProvider, public loading: LoadingController) {
     this.propostaAtual = new PropostaAtual();
   }

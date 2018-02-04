@@ -1,8 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Clinica, ClinicaList } from './../../providers/clinica/clinica';
-import { PropostaMedicamento } from './../../providers/proposta-medicamento/proposta-medicamento';
+import { Clinica } from './../../providers/clinica/clinica';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PropostaAtualProvider, PropostaAtual } from '../../providers/proposta-atual/proposta-atual';
 import { Http, Headers } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
